@@ -1,0 +1,24 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/StylesUI.uss" />
+
+    <ui:VisualElement class="root">
+        <ui:VisualElement class="direction-group">
+            <ui:Button text="Frente" name="forward" class="button" />
+            <ui:Button text="Esquerda" name="left" class="button" />
+            <ui:Button text="Trás" name="backward" class="button" />
+            <ui:Button text="Direita" name="right" class="button" />
+        </ui:VisualElement>
+
+        <ui:VisualElement class="condition-group">
+            <ui:Button text="Se" name="if" class="button" />
+            <ui:Button text="Senao" name="else" class="button" />
+            <ui:Button text="Enquanto" name="while" class="button" />
+        </ui:VisualElement>
+        <ui:VisualElement class="condition-group">
+            <ui:Button text="Caminho Livre" name="freeWay" class="button" />
+            <ui:Button text="Obstáculo" name="obstacle" class="button" />
+        </ui:VisualElement>
+
+        <ui:Button text="START" name="start" class="start-button" />
+    </ui:VisualElement>
+</ui:UXML>
