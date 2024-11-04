@@ -20,31 +20,23 @@ public class PlayerMove : MonoBehaviour
     public void MoveLeft()
     {
         manager.AllMovements.Enqueue(MoveComplete.LEFT);
+      
     }
     public void MoveRight()
     {
         manager.AllMovements.Enqueue(MoveComplete.RIGHT);
+        
     }
 
     public void MoveForward()
     {
         manager.AllMovements.Enqueue(MoveComplete.FORWARD);
+       
     }
     public void MoveBackward()
     {
         manager.AllMovements.Enqueue(MoveComplete.BACKWARD);
-    }
-
-    public void WhileCondition(MovementConditions condition)
-    {
-        if (!manager.whileCondition.ContainsKey(condition))
-            manager.whileCondition.Add(condition, true);
-    }
-
-    public void SetIfCondition(IFConditions condition)
-    {
-        if (!manager.ifCondition.ContainsKey(condition))
-            manager.ifCondition.Add(condition, true);
+      
     }
 
 
@@ -94,6 +86,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (manager.AllMovements.Count != 0)
         {
+
             var currentMove = manager.AllMovements.Dequeue();
             //se achar while
             if (currentMove == MoveComplete.WHILE)
@@ -168,17 +161,15 @@ public class PlayerMove : MonoBehaviour
     {
         //pega a condicao ao entrar no if
         var condition = manager.AllMovements.Dequeue();
-        Queue<MoveComplete> insideIfMoves = GetMovementsInsideWhileAndReturn();
+        Queue<MoveComplete> insideIfMoves = GetMovementsInsideIFAndReturn();
 
         switch (condition)
         {
-            case MoveComplete.FREE_WAY:
-                while (!collideWithAnObstacle)
+            case MoveComplete.OBSTACLE:
+                if (collideWithAnObstacle)
                 {
                     //remove o item
                     MoveComplete moveInsideIf = insideIfMoves.Dequeue();
-                    //coloca de novo ao final
-                    insideIfMoves.Enqueue(moveInsideIf);
                     yield return ProcessCurrentMovement(moveInsideIf);
                 }
 
@@ -187,7 +178,21 @@ public class PlayerMove : MonoBehaviour
                 {
                     collideWithAnObstacle = false;
                 }
+                break;
 
+            case MoveComplete.FREE_WAY:
+                if (!collideWithAnObstacle)
+                {
+                    //remove o item
+                    MoveComplete moveInsideIf = insideIfMoves.Dequeue();
+                    yield return ProcessCurrentMovement(moveInsideIf);
+                }
+
+                //reseta o collide
+                if (collideWithAnObstacle)
+                {
+                    collideWithAnObstacle = false;
+                }
                 break;
         }
     }
@@ -224,6 +229,7 @@ public class PlayerMove : MonoBehaviour
 
         if (collision.collider.CompareTag("Obstacle"))
         {
+
             collideWithAnObstacle = true;
         }
     }

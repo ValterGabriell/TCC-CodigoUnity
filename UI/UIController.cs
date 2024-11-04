@@ -77,6 +77,7 @@ public class UIController : MonoBehaviour
         _while.clicked += () =>
         {
             _while.visible = false;
+            _if.visible = false;            
             _endWhile.visible = true;
             CONTIDIONBTN_freeWay.visible = true;
             CONTIDIONBTN_obstacle.visible = true;
@@ -97,12 +98,6 @@ public class UIController : MonoBehaviour
             gameManager.AllMovements.Enqueue(GameManager.MoveComplete.IF);
         };
 
-        _else.clicked += () => {
-            isSettingACondition = true;
-            textAlgorithm.text += "; INICIO BLOCO SENAO";
-            gameManager.AllMovements.Enqueue(GameManager.MoveComplete.ELSE);
-        };
-
         _endIf.clicked += () => {
             _endIf.visible = false;
             CONTIDIONBTN_freeWay.visible = false;
@@ -111,10 +106,13 @@ public class UIController : MonoBehaviour
             isSettingACondition = false;
             textAlgorithm.text += "; FIM BLOCO SE";
             gameManager.AllMovements.Enqueue(GameManager.MoveComplete.END_IF);
+
+           
         };
 
         _endWhile.clicked += () => {
             _while.visible = true;
+            _if.visible = true;
             _endWhile.visible = false;
             CONTIDIONBTN_freeWay.visible = false;
             CONTIDIONBTN_obstacle.visible = false;
@@ -128,11 +126,10 @@ public class UIController : MonoBehaviour
 
         /* CONDITIONS */
         CONTIDIONBTN_freeWay.clicked += () => {
-           
-
             isSettingACondition = false;
             textAlgorithm.text += "; CAMINHHO LIVRE";
             gameManager.AllMovements.Enqueue(GameManager.MoveComplete.FREE_WAY);
+
         };
         CONTIDIONBTN_obstacle.clicked += () =>{
             isSettingACondition = false;
@@ -143,39 +140,4 @@ public class UIController : MonoBehaviour
         /* START */
         start.clicked += () => StartCoroutine(playerMove.StartMovements());
     }
-
-   
-
-    private void SetWhileCondition(List<Button> moveBtn)
-    {
-        isSettingACondition = false;
-        DisableEnableBtnsMove(moveBtn, !isSettingACondition);
-        playerMove.WhileCondition(GameManager.MovementConditions.FREE_WAY);
-    }
-
-    private void SetIfCondition(List<Button> moveBtn)
-    {
-        isSettingACondition = false;
-        //DisableEnableBtnsMove(moveBtn, !isSettingACondition);
-        playerMove.SetIfCondition(GameManager.IFConditions.OBSTACLE);
-    }
-
-
-    private void WannaCreateWhileCondition(List<Button> conditionsBtn, List<Button> moveBtn)
-    {
-        isSettingACondition = true;
-        //DisableEnableBtnsMove(moveBtn, !isSettingACondition);    
-        conditionsBtn.ForEach(x => x.visible = true);
-    }
-
-    private void WannaCreateIF(List<Button> conditionsBtn, List<Button> moveBtn)
-    {
-      
-        conditionsBtn.ForEach(x => x.visible = true);
-    }
-
-      private void DisableEnableBtnsMove(List<Button> moveBtn, bool show)
-            {
-                moveBtn.ForEach(x => x.visible = show);
-            }
 }

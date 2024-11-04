@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,15 +24,16 @@ public class GameManager : MonoBehaviour
         OBSTACLE
     }
 
+    public enum ControlClick
+    {
+        IF, WHILE
+    }
+
     public enum MoveComplete
     {
         LEFT, RIGHT, FORWARD, BACKWARD, IF, ELSE, WHILE, END_IF, END_WHILE, FREE_WAY, OBSTACLE,IDLE
     }
 
-    public enum MoveListType
-    {
-        NORMAL, IF, WHILE
-    }
 
     public Queue<MovementType> movementTypes = new();
     public Queue<MoveComplete> AllMovements = new();
@@ -39,4 +41,5 @@ public class GameManager : MonoBehaviour
 
     public Dictionary<MovementConditions, bool> whileCondition = new();
     public Dictionary<IFConditions, bool> ifCondition = new();
+
 }
