@@ -23,8 +23,20 @@ public class GameManager : MonoBehaviour
         OBSTACLE
     }
 
-    public Queue<MovementType> movementTypes = new Queue<MovementType>();
-    public Dictionary<MovementConditions, bool> whileCondition = new Dictionary<MovementConditions, bool>();
-    public Dictionary<IFConditions, bool> ifCondition = new Dictionary<IFConditions, bool>();
+    public enum MoveComplete
+    {
+        LEFT, RIGHT, FORWARD, BACKWARD, IF, ELSE, WHILE, END_IF, END_WHILE, FREE_WAY, OBSTACLE,IDLE
+    }
 
+    public enum MoveListType
+    {
+        NORMAL, IF, WHILE
+    }
+
+    public Queue<MovementType> movementTypes = new();
+    public Queue<MoveComplete> AllMovements = new();
+
+
+    public Dictionary<MovementConditions, bool> whileCondition = new();
+    public Dictionary<IFConditions, bool> ifCondition = new();
 }

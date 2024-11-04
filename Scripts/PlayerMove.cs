@@ -1,24 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using static GameManager;
+using static UnityEditor.Progress;
 
 public class PlayerMove : MonoBehaviour
 {
     public GameManager manager;
     public Rigidbody rb;
-    public float walkForce = 5f;
+    public float walkForce = 6f;
     public float jumpForce = 10f;
     public bool isGrounded = true;
     private bool isMoving = true;
-    private bool isObstacleIf = false;
-    private bool whileIsOk = false;
+    private bool collideWithAnObstacle = false;
 
-    public void MoveLeft() => manager.movementTypes.Enqueue(MovementType.LEFT);
-    public void MoveRight() => manager.movementTypes.Enqueue(MovementType.RIGHT);
-    public void MoveForward() => manager.movementTypes.Enqueue(MovementType.FORWARD);
-    public void MoveBackward() => manager.movementTypes.Enqueue(MovementType.BACKWARD);
+
+    private bool isFirstTimeIterateMovements = true;
+
+    public void MoveLeft()
+    {
+        manager.AllMovements.Enqueue(MoveComplete.LEFT);
+    }
+    public void MoveRight()
+    {
+        manager.AllMovements.Enqueue(MoveComplete.RIGHT);
+    }
+
+    public void MoveForward()
+    {
+        manager.AllMovements.Enqueue(MoveComplete.FORWARD);
+    }
+    public void MoveBackward()
+    {
+        manager.AllMovements.Enqueue(MoveComplete.BACKWARD);
+    }
 
     public void WhileCondition(MovementConditions condition)
     {
@@ -32,7 +47,34 @@ public class PlayerMove : MonoBehaviour
             manager.ifCondition.Add(condition, true);
     }
 
-  
+
+    private IEnumerator ProcessCurrentMovement(MoveComplete currentMove)
+    {
+        switch (currentMove)
+        {
+            case MoveComplete.LEFT:
+                yield return MoveCharacter(Vector3.left * walkForce);
+                break;
+            case MoveComplete.RIGHT:
+                yield return MoveCharacter(Vector3.right * walkForce);
+                break;
+            case MoveComplete.FORWARD:
+                yield return MoveCharacter(Vector3.forward * walkForce);
+                break;
+            case MoveComplete.BACKWARD:
+                yield return MoveCharacter(Vector3.back * walkForce);
+                break;
+        }
+    }
+
+
+
+
+    private IEnumerator MoveCharacter(Vector3 direction)
+    {
+        rb.linearVelocity = direction;
+        yield return new WaitForSeconds(0.5f);
+    }
 
 
     public IEnumerator StartMovements()
@@ -47,23 +89,24 @@ public class PlayerMove : MonoBehaviour
             yield return HandleMovePlayer();
         }
     }
+
     private IEnumerator HandleMovePlayer()
     {
-        var has = manager.whileCondition.GetValueOrDefault(MovementConditions.FREE_WAY, false);
-        if (has)
+        if (manager.AllMovements.Count != 0)
         {
-            while (has)
+            var currentMove = manager.AllMovements.Dequeue();
+            //se achar while
+            if (currentMove == MoveComplete.WHILE)
             {
-                foreach (var currentMove in manager.movementTypes)
-                {
-                    yield return SwitchMovementHandle(currentMove);
-                }
+                yield return ProcessWhile();
+            }else if (currentMove == MoveComplete.IF)
+            {
+                yield return ProcessIf();
             }
-        }
-        if (manager.movementTypes.Count != 0)
-        {
-            var currentMove = manager.movementTypes.Dequeue();
-            yield return SwitchMovementHandle(currentMove);
+            else
+            {
+                yield return ProcessCurrentMovement(currentMove);
+            }
         }
         else
         {
@@ -71,37 +114,107 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private IEnumerator SwitchMovementHandle(MovementType movementType)
+
+    /*LIDA WHILE*/
+    private IEnumerator ProcessWhile()
     {
-        //lida com o IF
-        if (isObstacleIf)
+        //pega a condicao ao entrar no while
+        var condition = manager.AllMovements.Dequeue();
+        Queue<MoveComplete> insideWhileMovement = GetMovementsInsideWhileAndReturn();
+
+        switch (condition)
         {
-            movementType = MovementType.LEFT;
-            isObstacleIf = false;
+            case MoveComplete.FREE_WAY:
+                while (!collideWithAnObstacle)
+                {
+                    //remove o item
+                    MoveComplete movementInsideWhile = insideWhileMovement.Dequeue();
+                    //coloca de novo ao final
+                    insideWhileMovement.Enqueue(movementInsideWhile);
+                    yield return ProcessCurrentMovement(movementInsideWhile);
+                }
+
+                //reseta o collide
+                if (collideWithAnObstacle)
+                {
+                    collideWithAnObstacle = false;
+                }
+
+                break;
         }
-        switch (movementType)
+
+
+    }
+
+    private Queue<MoveComplete> GetMovementsInsideWhileAndReturn()
+    {
+        //cria uma lista auxiliar para os movimentos que estão apenas dentro do while
+        Queue<MoveComplete> insideWhileMovement = new();
+
+        //movimentos apos a condicao
+        var movement = manager.AllMovements.Dequeue();
+        while (movement != MoveComplete.END_WHILE)
         {
-            case MovementType.LEFT:
-                yield return MoveCharacter(Vector3.left * walkForce);
-                break;
-            case MovementType.RIGHT:
-                yield return MoveCharacter(Vector3.right * walkForce);
-                break;
-            case MovementType.FORWARD:
-                yield return MoveCharacter(Vector3.forward * walkForce);
-                break;
-            case MovementType.BACKWARD:
-                yield return MoveCharacter(Vector3.back * walkForce);
+            insideWhileMovement.Enqueue(movement);
+            movement = manager.AllMovements.Dequeue();
+        }
+        return insideWhileMovement;
+    }
+    /*FIM LIDA WHILE*/
+
+
+    /*LIDA IF*/
+    private IEnumerator ProcessIf()
+    {
+        //pega a condicao ao entrar no if
+        var condition = manager.AllMovements.Dequeue();
+        Queue<MoveComplete> insideIfMoves = GetMovementsInsideWhileAndReturn();
+
+        switch (condition)
+        {
+            case MoveComplete.FREE_WAY:
+                while (!collideWithAnObstacle)
+                {
+                    //remove o item
+                    MoveComplete moveInsideIf = insideIfMoves.Dequeue();
+                    //coloca de novo ao final
+                    insideIfMoves.Enqueue(moveInsideIf);
+                    yield return ProcessCurrentMovement(moveInsideIf);
+                }
+
+                //reseta o collide
+                if (collideWithAnObstacle)
+                {
+                    collideWithAnObstacle = false;
+                }
+
                 break;
         }
     }
 
-    private IEnumerator MoveCharacter(Vector3 direction)
+    private Queue<MoveComplete> GetMovementsInsideIFAndReturn()
     {
-        rb.linearVelocity = direction;
-        yield return new WaitForSeconds(0.5f);
-    }
+        //cria uma lista auxiliar para os movimentos que estão apenas dentro do while
+        Queue<MoveComplete> insideIfMoves = new();
 
+        //movimentos apos a condicao
+        var movement = manager.AllMovements.Dequeue();
+        while (movement != MoveComplete.END_IF)
+        {
+            insideIfMoves.Enqueue(movement);
+            movement = manager.AllMovements.Dequeue();
+        }
+        return insideIfMoves;
+    }
+    /*FIM LIDA IF*/
+
+
+
+
+
+
+
+    //COLISAO
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Ground"))
@@ -111,21 +224,9 @@ public class PlayerMove : MonoBehaviour
 
         if (collision.collider.CompareTag("Obstacle"))
         {
-            if (manager.ifCondition.GetValueOrDefault(IFConditions.OBSTACLE, false))
-            {
-                isObstacleIf = true;
-                manager.ifCondition[IFConditions.OBSTACLE] = false;
-
-            }
-            else if (manager.whileCondition.GetValueOrDefault(MovementConditions.FREE_WAY,false))
-            {
-                whileIsOk = manager.whileCondition.GetValueOrDefault(MovementConditions.FREE_WAY, false);
-                manager.whileCondition[MovementConditions.FREE_WAY] = false;
-            }
-            else
-            {
-                manager.movementTypes.Clear();
-            }
+            collideWithAnObstacle = true;
         }
     }
 }
+
+

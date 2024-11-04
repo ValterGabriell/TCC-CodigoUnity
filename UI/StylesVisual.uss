@@ -1,0 +1,91 @@
+/* Estilo da raiz com fundo transparente */
+.root {
+    display: flex;
+    flex-direction: row\;
+    align-items: flex-start;
+    padding: 0;
+    margin: 0;
+    background-color: rgba(245, 245, 245, 0.0); /* Totalmente transparente */
+}
+
+/* Grupos de botões com fundo semi-transparente e maior altura */
+.group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 6px 0;
+    margin: 6px 0;
+    border-radius: 6px;
+    border: 1px solid rgba(209, 209, 209, 0.5); /* Borda semi-transparente */
+    background-color: rgba(255, 255, 255, 0.3); /* Fundo semi-transparente */
+}
+
+/* Rótulos dos grupos */
+.group-label {
+    font-size: 16px; /* Aumentado para melhor legibilidade */
+    font-weight: bold;
+    color: #333333;
+    margin: 0;
+}
+
+/* Botões de Direção */
+.direction-group {
+    background-color: rgba(225, 247, 213, 0.3); /* Verde claro semi-transparente */
+}
+.direction-button {
+    font-size: 16px; /* Aumentado para melhor legibilidade */
+    color: #2d7a3b;
+    background-color: rgba(255, 255, 255, 0.6); /* Fundo branco semi-transparente */
+    border: none;
+    padding: 10px 20px; /* Aumentado para botões maiores */
+    margin: 4px 0;
+    font-weight: bold;
+    align-self: flex-start;
+    border-radius: 8px;
+}
+
+/* Botões de Condição */
+.condition-group {
+    background-color: rgba(211, 229, 255, 0.3); /* Azul claro semi-transparente */
+}
+.condition-button {
+    font-size: 16px; /* Aumentado para melhor legibilidade */
+    color: #1b4f91;
+    background-color: rgba(255, 255, 255, 0.6); /* Fundo branco semi-transparente */
+    border: none;
+    padding: 10px 20px; /* Aumentado para botões maiores */
+    margin: 4px 0;
+    font-weight: bold;
+    align-self: flex-start;
+    border-radius: 8px;
+}
+
+/* Botões de Condição de Caminho */
+.path-condition-group {
+    background-color: rgba(255, 235, 204, 0.3); /* Amarelo claro semi-transparente */
+}
+.path-button {
+    font-size: 16px; /* Aumentado para melhor legibilidade */
+    color: #b67a00;
+    background-color: rgba(255, 255, 255, 0.6); /* Fundo branco semi-transparente */
+    border: none;
+    padding: 10px 20px; /* Aumentado para botões maiores */
+    margin: 4px 0;
+    font-weight: bold;
+    align-self: flex-start;
+    border-radius: 8px;
+}
+
+/* Botão de Start */
+.start-button {
+    background-color: rgba(255, 204, 204, 0.3); /* Vermelho claro semi-transparente */
+    color: #b30000;
+    font-size: 18px; /* Aumentado para ser mais proeminente */
+    font-weight: bold;
+    padding: 12px 24px; /* Aumentado para botões maiores */
+    margin-top: 10px;
+    border: 2px solid rgba(179, 0, 0, 0.5); /* Borda semi-transparente */
+    border-radius: 8px;
+    text-transform: uppercase;
+    align-self: flex-start;
+}
