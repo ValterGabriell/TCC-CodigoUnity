@@ -17,7 +17,7 @@
             </ui:VisualElement>
             <ui:VisualElement class="path-condition-group group" style="background-color: rgba(178, 145, 95, 0.3); width: 258px;">
                 <ui:Button text="Caminho Livre" name="freeWay" class="path-button" />
-                <ui:Button text="Tem Obstáculo" name="obstacle" class="path-button" />
+                <ui:Button text="Tem Chave" name="hasKey" class="path-button" />
             </ui:VisualElement>
             <ui:Button text="START" name="start" class="start-button" />
         </ui:VisualElement>

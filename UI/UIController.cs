@@ -134,7 +134,7 @@ public class UIController : MonoBehaviour
         CONTIDIONBTN_obstacle.clicked += () =>{
             isSettingACondition = false;
             textAlgorithm.text += "; TIVER OBSTACULO";
-            gameManager.AllMovements.Enqueue(GameManager.MoveComplete.OBSTACLE);
+            gameManager.AllMovements.Enqueue(GameManager.MoveComplete.HAS_COLLIDE_WITH_OBSTACLE);
         };
 
         /* START */

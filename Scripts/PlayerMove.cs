@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static GameManager;
-using static UnityEditor.Progress;
+
 
 public class PlayerMove : MonoBehaviour
 {
@@ -14,92 +14,64 @@ public class PlayerMove : MonoBehaviour
     private bool isMoving = true;
     private bool collideWithAnObstacle = false;
 
-
-    private bool isFirstTimeIterateMovements = true;
-
-    public void MoveLeft()
-    {
-        manager.AllMovements.Enqueue(MoveComplete.LEFT);
-      
-    }
-    public void MoveRight()
-    {
-        manager.AllMovements.Enqueue(MoveComplete.RIGHT);
-        
-    }
-
-    public void MoveForward()
-    {
-        manager.AllMovements.Enqueue(MoveComplete.FORWARD);
-       
-    }
-    public void MoveBackward()
-    {
-        manager.AllMovements.Enqueue(MoveComplete.BACKWARD);
-      
-    }
+    public bool raycastIsCollidingOnObstacle = false;
+    public bool handleCollisionWithObstacle = false;
 
 
-    private IEnumerator ProcessCurrentMovement(MoveComplete currentMove)
+
+
+
+
+    private void FixedUpdate()
     {
-        switch (currentMove)
+        Vector3 fwd = transform.TransformDirection(Vector3.forward);
+        int layerMask = 1 << 8;
+        int sizeRaycast = 3;
+
+        Debug.DrawRay(transform.position, fwd * sizeRaycast, Color.red);
+
+        if (Physics.Raycast(transform.position, fwd, out RaycastHit hit,sizeRaycast, layerMask))
         {
-            case MoveComplete.LEFT:
-                yield return MoveCharacter(Vector3.left * walkForce);
-                break;
-            case MoveComplete.RIGHT:
-                yield return MoveCharacter(Vector3.right * walkForce);
-                break;
-            case MoveComplete.FORWARD:
-                yield return MoveCharacter(Vector3.forward * walkForce);
-                break;
-            case MoveComplete.BACKWARD:
-                yield return MoveCharacter(Vector3.back * walkForce);
-                break;
+            if (hit.collider.CompareTag("Obstacle"))
+            {
+                if (handleCollisionWithObstacle)
+                {
+                    raycastIsCollidingOnObstacle = false;
+                }
+                else
+                {
+                    raycastIsCollidingOnObstacle = true;
+                }
+                
+            }
         }
-    }
-
-
-
-
-    private IEnumerator MoveCharacter(Vector3 direction)
-    {
-        rb.linearVelocity = direction;
-        yield return new WaitForSeconds(0.5f);
-    }
-
-
-    public IEnumerator StartMovements()
-    {
-        if (!isMoving)
+        else
         {
-            isMoving = true;
+            //NAO COLIDE COM NADA
+            raycastIsCollidingOnObstacle = false;
         }
 
-        while (isMoving)
-        {
-            yield return HandleMovePlayer();
-        }
     }
+
+
+
 
     private IEnumerator HandleMovePlayer()
     {
+        manager.gameIsRunning = true;
         if (manager.AllMovements.Count != 0)
         {
-
             var currentMove = manager.AllMovements.Dequeue();
-            //se achar while
-            if (currentMove == MoveComplete.WHILE)
+            if (raycastIsCollidingOnObstacle)
             {
-                yield return ProcessWhile();
-            }else if (currentMove == MoveComplete.IF)
-            {
-                yield return ProcessIf();
+                isMoving = false;
+                manager.AllMovements.Clear();
+                handleCollisionWithObstacle = true;
             }
             else
             {
                 yield return ProcessCurrentMovement(currentMove);
-            }
+            } 
         }
         else
         {
@@ -165,7 +137,7 @@ public class PlayerMove : MonoBehaviour
 
         switch (condition)
         {
-            case MoveComplete.OBSTACLE:
+            case MoveComplete.HAS_COLLIDE_WITH_OBSTACLE:
                 if (collideWithAnObstacle)
                 {
                     //remove o item
@@ -215,6 +187,70 @@ public class PlayerMove : MonoBehaviour
 
 
 
+
+
+    private IEnumerator ProcessCurrentMovement(MoveComplete currentMove)
+    {
+        switch (currentMove)
+        {
+            case MoveComplete.LEFT:
+                yield return MoveCharacter(Vector3.left * walkForce);
+                break;
+            case MoveComplete.RIGHT:
+                yield return MoveCharacter(Vector3.right * walkForce);
+                break;
+            case MoveComplete.FORWARD:
+                yield return MoveCharacter(Vector3.forward * walkForce);
+                break;
+            case MoveComplete.BACKWARD:
+                yield return MoveCharacter(Vector3.back * walkForce);
+                break;
+        }
+    }
+
+
+
+
+    private IEnumerator MoveCharacter(Vector3 direction)
+    {
+        rb.linearVelocity = direction;
+        yield return new WaitForSeconds(0.5f);
+    }
+
+
+    public IEnumerator StartMovements()
+    {
+        if (!isMoving)
+        {
+            isMoving = true;
+        }
+
+        while (isMoving)
+        {
+            yield return HandleMovePlayer();
+        }
+    }
+    public void MoveLeft()
+    {
+        manager.AllMovements.Enqueue(MoveComplete.LEFT);
+
+    }
+    public void MoveRight()
+    {
+        manager.AllMovements.Enqueue(MoveComplete.RIGHT);
+
+    }
+
+    public void MoveForward()
+    {
+        manager.AllMovements.Enqueue(MoveComplete.FORWARD);
+
+    }
+    public void MoveBackward()
+    {
+        manager.AllMovements.Enqueue(MoveComplete.BACKWARD);
+
+    }
 
 
 

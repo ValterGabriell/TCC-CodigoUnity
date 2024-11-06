@@ -2,13 +2,20 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-    public PlayerMove movement;
-
+    public bool canInteract = false;
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Obstacle"))
+        if (collision.collider.CompareTag("InteractArea"))
         {
-           //movement.enabled = false;
+            canInteract = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.CompareTag("InteractArea"))
+        {
+            canInteract = false;
         }
     }
 }
