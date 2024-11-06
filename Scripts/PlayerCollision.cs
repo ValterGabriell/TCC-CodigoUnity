@@ -7,6 +7,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.collider.CompareTag("InteractArea"))
         {
+            Debug.Log("Jogador entrou na area de colisao");
             canInteract = true;
         }
     }
@@ -15,6 +16,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.collider.CompareTag("InteractArea"))
         {
+            Debug.Log("Jogador saiu na area de colisao");
             canInteract = false;
         }
     }

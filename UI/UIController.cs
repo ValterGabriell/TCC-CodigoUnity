@@ -8,7 +8,6 @@ public class UIController : MonoBehaviour
     public GameManager gameManager;
 
     private VisualElement root;
-    private bool isSettingACondition = false;
 
     private void OnEnable()
     {
@@ -38,6 +37,7 @@ public class UIController : MonoBehaviour
 
         //START
         Button start = root.Q<Button>("start");
+        Button avance = root.Q<Button>("avance");
 
         
 
@@ -70,7 +70,10 @@ public class UIController : MonoBehaviour
 
 
 
-
+        avance.clicked += () =>
+        {
+            gameManager.CompleteLevel();
+        };
 
 
         /* WHILE CLICKED*/
@@ -83,7 +86,7 @@ public class UIController : MonoBehaviour
             CONTIDIONBTN_obstacle.visible = true;
 
             textAlgorithm.text += "; ENQUANTO";
-            isSettingACondition = true;
+        
             gameManager.AllMovements.Enqueue(GameManager.MoveComplete.WHILE);
         };
 
@@ -93,7 +96,7 @@ public class UIController : MonoBehaviour
             CONTIDIONBTN_obstacle.visible = true;
             _endIf.visible = true;
 
-            isSettingACondition = true;
+          
             textAlgorithm.text += "; INICIO BLOCO SE";
             gameManager.AllMovements.Enqueue(GameManager.MoveComplete.IF);
         };
@@ -103,7 +106,7 @@ public class UIController : MonoBehaviour
             CONTIDIONBTN_freeWay.visible = false;
             CONTIDIONBTN_obstacle.visible = false;
 
-            isSettingACondition = false;
+         
             textAlgorithm.text += "; FIM BLOCO SE";
             gameManager.AllMovements.Enqueue(GameManager.MoveComplete.END_IF);
 
@@ -117,7 +120,7 @@ public class UIController : MonoBehaviour
             CONTIDIONBTN_freeWay.visible = false;
             CONTIDIONBTN_obstacle.visible = false;
 
-            isSettingACondition = false;
+          
             textAlgorithm.text += "; FIM BLOCO ENQUANTO";
             gameManager.AllMovements.Enqueue(GameManager.MoveComplete.END_WHILE);
         };
@@ -126,13 +129,13 @@ public class UIController : MonoBehaviour
 
         /* CONDITIONS */
         CONTIDIONBTN_freeWay.clicked += () => {
-            isSettingACondition = false;
+          
             textAlgorithm.text += "; CAMINHHO LIVRE";
             gameManager.AllMovements.Enqueue(GameManager.MoveComplete.FREE_WAY);
 
         };
         CONTIDIONBTN_obstacle.clicked += () =>{
-            isSettingACondition = false;
+           
             textAlgorithm.text += "; TIVER OBSTACULO";
             gameManager.AllMovements.Enqueue(GameManager.MoveComplete.HAS_COLLIDE_WITH_OBSTACLE);
         };

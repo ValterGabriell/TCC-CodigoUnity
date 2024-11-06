@@ -22,13 +22,14 @@ public class ControleJogo : MonoBehaviour
     private List<string> actionsList = new List<string>();
     private List<ConditionBlock> conditionBlocks = new List<ConditionBlock>();
 
+    
+
     // Referência ao GameObject do jogador
     public Transform playerTransform;
 
     // Velocidade do movimento suave
     public float moveSpeed = 2f;
 
-  
 
     private void OnEnable()
     {
@@ -43,6 +44,7 @@ public class ControleJogo : MonoBehaviour
         // BOTOES CONDICIONAIS ESCOLHAS
         Button conditionFreeWay = root.Q<Button>("freeWay");
         Button conditionhasKey = root.Q<Button>("hasKey");
+        Button pickableArea = root.Q<Button>("pickableArea");
 
         // BOTOES CONDICOES
         Button btnIf = root.Q<Button>("if");
@@ -62,8 +64,9 @@ public class ControleJogo : MonoBehaviour
         backward.clicked += () => RecordAction("backward");
 
         // Condições
-        conditionFreeWay.clicked += () => RecordAction("freeWay");
+        //conditionFreeWay.clicked += () => RecordAction("freeWay");
         conditionhasKey.clicked += () => RecordAction("hasKey");
+        pickableArea.clicked += () => RecordAction("isOnPickableArea");
 
         // Controle de Estruturas de Controle
         btnIf.clicked += () => RecordAction("if");
@@ -94,6 +97,9 @@ public class ControleJogo : MonoBehaviour
                 buttons.Add(backward);
                 buttons.Add(btnIf);
                 buttons.Add(btnEndIf);
+                buttons.Add(pickableArea);
+
+
                 DefineVisibilityOfButtonsByLevel(buttons);
                 break;
 

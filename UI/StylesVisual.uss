@@ -76,6 +76,18 @@
     border-radius: 8px;
 }
 
+.act-button {
+    font-size: 24px; /* Aumentado para melhor legibilidade */
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.6); /* Fundo branco semi-transparente */
+    border: none;
+    padding: 10px 20px; /* Aumentado para botões maiores */
+    margin: 4px 0;
+    font-weight: bold;
+    align-self: flex-start;
+    border-radius: 8px;
+}
+
 /* Botão de Start */
 .start-button {
     background-color: rgba(255, 204, 204, 0.3); /* Vermelho claro semi-transparente */

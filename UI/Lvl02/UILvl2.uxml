@@ -11,22 +11,14 @@
             <ui:VisualElement class="condition-group group" style="background-color: rgba(91, 128, 180, 0.3); width: 259px;">
                 <ui:Button text="Se" name="if" class="condition-button" />
                 <ui:Button text="Fim Bloco Se" name="end_if" class="condition-button" />
-                <ui:Button text="Senao" name="else" class="condition-button" />
-                <ui:Button text="Enquanto" name="while" class="condition-button" />
-                <ui:Button text="Fim Bloco Enquanto" name="end_while" class="condition-button" />
             </ui:VisualElement>
             <ui:VisualElement class="path-condition-group group" style="background-color: rgba(178, 145, 95, 0.3); width: 258px;">
-                <ui:Button text="Caminho Livre" name="freeWay" class="path-button" />
-                <ui:Button text="Tem Chave" name="hasKey" class="path-button" />
+                <ui:Button text="Coleta Chave" name="pickKey" class="path-button" />
                 <ui:Button text="Área de Coleta" name="pickableArea" class="path-button" />
             </ui:VisualElement>
             <ui:Button text="START" name="start" class="start-button" />
         </ui:VisualElement>
         <ui:VisualElement style="width: 300px; margin-right: 20px; align-self: flex-start; height: 500px;">
-            <ui:Label name="stepsLabel" text="Passos Selecionados:" style="font-size: 16px; color: black; margin-bottom: 10px;" />
-            <ui:ScrollView name="stepsScrollView" style="height: 1280px; background-color: rgba(220, 220, 220, 0.3); padding: 5px;">
-                <ui:Label name="stepsContent" text="Nenhum passo selecionado ainda." style="font-size: 24px; color: rgb(80, 0, 255); white-space: normal; word-wrap: break-word;" />
-            </ui:ScrollView>
             <ui:Button text="AVANCAR" name="avance" class="path-button" />
         </ui:VisualElement>
     </ui:VisualElement>
