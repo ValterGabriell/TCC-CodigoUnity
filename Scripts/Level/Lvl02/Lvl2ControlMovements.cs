@@ -7,7 +7,7 @@ public class Lvl2Controle : MonoBehaviour
 {
     private VisualElement root;
 
-
+    public GameManager manager;
     // Lista para armazenar as ações e condições
     private readonly List<string> actionsList = new List<string>();
     private readonly List<ConditionBlock> conditionBlocks = new List<ConditionBlock>();
@@ -83,8 +83,10 @@ public class Lvl2Controle : MonoBehaviour
     // Função para executar as ações armazenadas
     private void ExecuteActions()
     {
+
         if (hasAllIfBeenClosed)
         {
+            manager.isWalking = true;
             // Iterar sobre as ações armazenadas e executar em sequência
             StartCoroutine(ExecuteActionsSequence());
         }
@@ -144,6 +146,7 @@ public class Lvl2Controle : MonoBehaviour
         }
         currentIfActions.Clear(); // Limpar ações após execução
         actionsList.Clear(); // Limpar a lista original
+        manager.isWalking = false;
     }
 
 

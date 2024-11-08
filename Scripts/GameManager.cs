@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
+    public bool isWalking = false;
+
     // Gerenciamento de cenas (níveis)
     public void CompleteLevel()
     {

@@ -13,7 +13,7 @@ public class PlayerMove : MonoBehaviour
     public bool isGrounded = true;
     private bool isMoving = true;
     private bool collideWithAnObstacle = false;
-
+        
     public bool raycastIsCollidingOnObstacle = false;
     public bool handleCollisionWithObstacle = false;
 
@@ -42,7 +42,6 @@ public class PlayerMove : MonoBehaviour
                 {
                     raycastIsCollidingOnObstacle = true;
                 }
-                
             }
         }
         else

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class ControleJogo : MonoBehaviour
 {
+
+    public GameManager Manager;
     private VisualElement root;
 
     //define o level
@@ -138,6 +140,7 @@ public class ControleJogo : MonoBehaviour
     // Função para executar as ações armazenadas
     private void ExecuteActions()
     {
+        Manager.isWalking = true;
         Debug.Log("Iniciando Execução...");
 
         // Iterar sobre as ações armazenadas e executar em sequência
@@ -217,6 +220,7 @@ public class ControleJogo : MonoBehaviour
             yield return StartCoroutine(ExecuteWhileActions(currentWhileActions, currentConditionBlock));
         }
         actionsList.Clear();
+        Manager.isWalking = false;
     }
     private ConditionBlock GetConditionForWhile()
     {

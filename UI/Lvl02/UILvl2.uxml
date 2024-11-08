@@ -13,7 +13,7 @@
                 <ui:Button text="Fim Bloco Se" name="end_if" class="condition-button" />
             </ui:VisualElement>
             <ui:VisualElement class="path-condition-group group" style="background-color: rgba(178, 145, 95, 0.3); width: 258px;">
-                <ui:Button text="Coleta Chave" name="pickKey" class="path-button" />
+                <ui:Button text="Coleta Chave" name="pickKey" class="act-button" />
                 <ui:Button text="Área de Coleta" name="pickableArea" class="path-button" />
             </ui:VisualElement>
             <ui:Button text="START" name="start" class="start-button" />
