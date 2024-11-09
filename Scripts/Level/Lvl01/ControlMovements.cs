@@ -126,7 +126,7 @@ public class ControleJogo : MonoBehaviour
     // Função para armazenar ações de movimento
     private void RecordAction(string action)
     {
-        Debug.Log("Armazenando ação: " + action);
+      
         actionsList.Add(action);
     }
 
@@ -141,14 +141,14 @@ public class ControleJogo : MonoBehaviour
         {
             isFreeway = true;
         }
-        Debug.Log("Armazenando condição: " + condition);  // Verifique o valor de isFreeway aqui
+       
     }
 
     // Função para executar as ações armazenadas
     private void ExecuteActions()
     {
         Manager.isWalking = true;
-        Debug.Log("Iniciando Execução...");
+       
 
         // Iterar sobre as ações armazenadas e executar em sequência
         StartCoroutine(ExecuteActionsSequence());
@@ -174,7 +174,7 @@ public class ControleJogo : MonoBehaviour
 
                 // Defina a condição para o while (chamando GetConditionForWhile)
                 currentConditionBlock = GetConditionForWhile();
-                Debug.Log("Iniciando bloco while com condição: " + currentConditionBlock.Condition);
+                
                 continue;  // Pula para a próxima iteração
             }
 
@@ -274,7 +274,7 @@ public class ControleJogo : MonoBehaviour
         while (block.IsConditionTrue())
         {
             // Verifique se a condição do while está sendo atendida
-            Debug.Log("Condição do while é verdadeira. Executando ações...");
+           
 
             // Verifica o número de tentativas para evitar loop infinito
             attemptCount++;
@@ -285,7 +285,7 @@ public class ControleJogo : MonoBehaviour
             }
             if (attemptCount > maxAttempts)
             {
-                Debug.LogWarning("Loop while atingiu o limite de tentativas.");
+
                 break; // Interrompe o loop se atingir o limite
             }
 
@@ -293,10 +293,10 @@ public class ControleJogo : MonoBehaviour
             if (insideIf)
             {
                 // Se a condição do if for verdadeira, executamos as ações dentro do if
-                Debug.Log("Executando ações do IF dentro do While");
+              
                 foreach (var action in currentIfActions)
                 {
-                    Debug.Log("Ação do IF: " + action);
+              
                     yield return StartCoroutine(ExecuteMovementSmooth(action));
                 }
             }
@@ -304,14 +304,13 @@ public class ControleJogo : MonoBehaviour
             // Executa as ações dentro do bloco while
             foreach (var action in actions)
             {
-                Debug.Log("Executando ação do While: " + action); // Verificar qual ação está sendo executada
-                yield return StartCoroutine(ExecuteMovementSmooth(action));
+               
             }
             // Aguarda o próximo quadro para evitar que o loop bloqueie o jogo
             yield return null; // Aguarda o próximo frame
         }
 
-        Debug.Log("Saindo do loop while.");
+      
     }
 
   
@@ -358,7 +357,7 @@ public class ControleJogo : MonoBehaviour
                 break;
         }
 
-        Debug.Log("Movendo para: " + targetPosition);  // Verificar se a posição de destino está sendo calculada corretamente
+       
 
         float timeToMove = 1f / moveSpeed;
         float elapsedTime = 0f;
@@ -371,7 +370,7 @@ public class ControleJogo : MonoBehaviour
         }
 
         playerTransform.position = targetPosition;
-        Debug.Log("Movimento concluído para: " + targetPosition);  // Verificar se o movimento terminou corretamente
+
     }
 
     // Classe para armazenar as condições associadas a um bloco (if ou while)

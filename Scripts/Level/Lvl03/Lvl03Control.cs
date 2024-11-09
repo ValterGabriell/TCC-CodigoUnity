@@ -112,7 +112,7 @@ public class Lvl03Control : MonoBehaviour
         bool insideWhile = false;  // Verifica se estamos dentro de um if
         List<string> currentWhileActions = new(); // Ações armazenadas para o if
         bool isFreeWay = false;
-        ConditionBlock currentConditionBlock = null; // Bloco atual de condição (if ou while)
+        
 
         List<string> actionsCopy = new List<string>(actionsList); // Copia a lista original
 

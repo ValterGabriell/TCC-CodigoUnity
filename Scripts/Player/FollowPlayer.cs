@@ -5,6 +5,7 @@ public class FollowPlayer : MonoBehaviour
 
     public Transform currentPlayer;
     public Vector3 offset = new(0, 0, 0);
+    public GameManager manager;
 
     void Start()
     {

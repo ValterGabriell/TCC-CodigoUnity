@@ -102,7 +102,7 @@ public class Lvl2Controle : MonoBehaviour
         bool insideIf = false;  // Verifica se estamos dentro de um if
         List<string> currentIfActions = new(); // Ações armazenadas para o if
         bool wannExecSmthOnPickableArea = false;
-        ConditionBlock currentConditionBlock = null; // Bloco atual de condição (if ou while)
+        
 
         List<string> actionsCopy = new List<string>(actionsList); // Copia a lista original
 

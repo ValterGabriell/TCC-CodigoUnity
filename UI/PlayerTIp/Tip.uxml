@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd">
+
+    <!-- Símbolo de interrogação acima de tudo -->
+    <engine:Button name="tip" text="?" style="font-size: 30px; color: #7C3F58; position: absolute; top: 10px; left: 10px;" />
+
+    <!-- Container principal do popup -->
+    <engine:VisualElement name="popupContainer" style="width: 300px; height: auto; background-color: #FFF6D3; border-radius: 10px; padding: 10px; border-width: 2px; border-color: #7C3F58; position: absolute; top: 50px; left: 20px;">
+        
+        <!-- Título da Fase -->
+        <engine:Label name="phaseTitle" text="Título da Fase" style="unity-font-style: bold; font-size: 16px; color: #7C3F58; margin-bottom: 5px;" />
+
+        <!-- Descrição da Fase -->
+        <engine:Label name="phaseDescription" text="Objetivo desta fase: Ajude o Gato Aventureiro a caminhar até o final do caminho para encontrar um amigo." style="font-size: 14px; color: #7C3F58; margin-bottom: 10px;" />
+
+        <!-- Container para dicas -->
+         <engine:Label name="hintsTitle" text="Dicas:" style="unity-font-style: bold; font-size: 14px; color: #EB6B6F; margin-bottom: 5px;" />
+         <engine:Label name="hintText" text="Use as setas para caminhar e prestar atenção aos obstáculos." style="font-size: 13px; color: #7C3F58;" />
+
+           <!-- Botão inicial para marcar "Entendido" -->
+        <engine:Button name="initialButton" text="Entendido" style="margin-top: 10px; background-color: #EB6B6F; color: white; padding: 5px; border-radius: 5px;" />
+    </engine:VisualElement>
+</engine:UXML>

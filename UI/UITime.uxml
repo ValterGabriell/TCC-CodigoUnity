@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd">
+
+    <!-- Container principal para os itens (tempo, pontos e chave) -->
+    <engine:VisualElement style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; justify-content: center; background-color: rgba(255, 246, 211, 0.7); padding: 5px; border-radius: 10px;">
+
+        <!-- Item de Tempo -->
+        <engine:Label name="timeLabel" text="00:00" style="font-size: 24px; color: #7C3F58; margin-right: 15px; font-weight: bold;"/>
+
+        <!-- Item de Pontos -->
+        <engine:Label name="pointsLabel" text="Pontos: 0" style="font-size: 24px; color: #EB6B6F; margin-right: 15px; font-weight: bold;"/>
+
+        <!-- Item de Chave (indicador de item específico) -->
+        <engine:VisualElement name="keyIndicator" style="width: 30px; height: 30px; background-color: #F9A875; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 2px solid #7C3F58;">
+            <!-- Ícone ou texto indicando que o jogador tem a chave (por exemplo) -->
+            <engine:Label text="K" style="font-size: 16px; color: white; font-weight: bold;"/>
+        </engine:VisualElement>
+    </engine:VisualElement>
+
+</engine:UXML>

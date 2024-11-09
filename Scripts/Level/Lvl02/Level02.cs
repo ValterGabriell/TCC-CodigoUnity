@@ -17,4 +17,9 @@ public class Level02 : MonoBehaviour
             }
         }
     }
+
+    private void Start()
+    {
+        Time.timeScale = 0;
+    }
 }

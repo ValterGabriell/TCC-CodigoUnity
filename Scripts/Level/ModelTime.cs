@@ -3,7 +3,6 @@ using UnityEngine;
 public class ModelTime : MonoBehaviour
 {
     private float elapsedTime; // Variável para armazenar o tempo decorrido
-    private bool isRunning = true; // Controle para saber se o timer está ativo
     public string timeElapsed = string.Empty;
 
 
