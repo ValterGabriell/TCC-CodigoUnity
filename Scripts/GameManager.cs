@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
 
     public bool isWalking = false;
+    public bool isLevelCompleted = false;
 
     // Gerenciamento de cenas (níveis)
-    public void CompleteLevel()
+    public void CompleteLevel(VisualElement root)
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        isLevelCompleted = false;
+        root.visible = false;
     }
 
     // Enum para os tipos de movimento

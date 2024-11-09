@@ -13,6 +13,7 @@ public class Lvl03Control : MonoBehaviour
     private readonly List<ConditionBlock> conditionBlocks = new();
 
     private bool hasAllWhileBeenClosed = false;
+    private bool whileHasActive = false;
 
     public PlayerCollision playerCollision;
     // Referência ao GameObject do jogador
@@ -70,10 +71,11 @@ public class Lvl03Control : MonoBehaviour
         if (action == "end_while")
         {
             hasAllWhileBeenClosed = true;
+            whileHasActive = false;
         }
-        else if (action == "end")
+        else if (action == "while")
         {
-            hasAllWhileBeenClosed = false;
+            whileHasActive = true;
         }
         actionsList.Add(action);
     }
@@ -82,16 +84,26 @@ public class Lvl03Control : MonoBehaviour
     // Função para executar as ações armazenadas
     private void ExecuteActions()
     {
-        if (hasAllWhileBeenClosed)
+        if (whileHasActive)
+        {
+            if (hasAllWhileBeenClosed)
+            {
+                gameManager.isWalking = true;
+                // Iterar sobre as ações armazenadas e executar em sequência
+                StartCoroutine(ExecuteActionsSequence());
+            }
+            else
+            {
+                Debug.LogWarning("PRECISA FECHAR OS WHILE");
+            }
+        }
+        else
         {
             gameManager.isWalking = true;
             // Iterar sobre as ações armazenadas e executar em sequência
             StartCoroutine(ExecuteActionsSequence());
         }
-        else
-        {
-            Debug.LogWarning("PRECISA FECHAR OS WHILE");
-        }
+        
 
     }
 

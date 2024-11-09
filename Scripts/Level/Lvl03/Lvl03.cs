@@ -8,7 +8,7 @@ public class Lvl03 : MonoBehaviour
 
         if (collision.collider.CompareTag("Player"))
         {
-            gameManager.CompleteLevel();
+            gameManager.isLevelCompleted = true;
         }
     }
 }

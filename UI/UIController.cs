@@ -72,7 +72,7 @@ public class UIController : MonoBehaviour
 
         avance.clicked += () =>
         {
-            gameManager.CompleteLevel();
+            gameManager.isLevelCompleted = true;
         };
 
 

@@ -9,12 +9,11 @@ public class Level02 : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        
         if (collision.collider.CompareTag("Player"))
         {
             if (hasTheKey)
             {
-                gameManager.CompleteLevel();
+                gameManager.isLevelCompleted = true;           
             }
         }
     }

@@ -11,5 +11,5 @@ AssetOrigin:
   productId: 135227
   packageName: Dog Knight PBR Polyart
   packageVersion: 1.2
-  assetPath: Assets/DogKnight/Animator/DogControl.controller
+  assetPath: Assets/Controller/DogControl.controller
   uploadId: 347742

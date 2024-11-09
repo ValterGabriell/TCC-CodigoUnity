@@ -32,6 +32,13 @@ public class ControleJogo : MonoBehaviour
     // Velocidade do movimento suave
     public float moveSpeed = 2f;
 
+    private void FixedUpdate()
+    {
+        if (Manager.isLevelCompleted)
+        {
+            root.visible = false;
+        }
+    }
 
     private void OnEnable()
     {
@@ -80,7 +87,7 @@ public class ControleJogo : MonoBehaviour
         // Iniciar Execução
         start.clicked += () => ExecuteActions();
 
-        DisableButtons(new List<Button> { left,right,forward,backward, btnIf ,btnElse,btnEndIf,btnEndWhile,btnWhile, conditionFreeWay, conditionhasKey});
+        DisableButtons(new List<Button> { left,right,forward,backward, btnIf ,btnElse,btnEndIf,btnEndWhile,btnWhile, conditionFreeWay, pickableArea, conditionhasKey });
 
         List<Button> buttons = new();
         switch (currentLevel)
