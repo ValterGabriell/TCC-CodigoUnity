@@ -7,6 +7,8 @@ public class UIFinalLevel : MonoBehaviour
     private VisualElement root;
     public GameManager manager;
     public ModelTime _time;
+    public PointsModel _points;
+    Label pointsLabel;
 
     public PhaseType faseAtual = PhaseType.THIRD;
     public enum PhaseType
@@ -24,7 +26,9 @@ public class UIFinalLevel : MonoBehaviour
         Button avancar = root.Q<Button>("nextPhase");
         time = root.Q<Label>("modelTime");
         Label fase = root.Q<Label>("faseAtual");
+        pointsLabel = root.Q<Label>("pointsLabel");
         fase.text = "Fase: " + faseAtual.ToString();
+       
 
         avancar.clicked += () => {
             manager.CompleteLevel(root);
@@ -37,9 +41,8 @@ public class UIFinalLevel : MonoBehaviour
         {
             root.visible = true;
             Time.timeScale = 0;
-            Debug.Log(_time.timeElapsed);
-
             time.text = "Tempo: " + _time.timeElapsed;
+            pointsLabel.text = "Pontos: " + _points.GetCurrentPoints();
         }
     }
 }

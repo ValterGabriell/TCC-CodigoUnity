@@ -13,6 +13,7 @@
         <engine:VisualElement style="margin-bottom: 15px;">
             <engine:Label  name="faseAtual" text="Fase: [Nome da Fase]" style="color: #f9a875; font-size: 18px; margin-bottom: 5px;" />
             <engine:Label name="modelTime" text="Tempo: [XX:XX]" style="color: #f9a875; font-size: 18px;" />
+            <engine:Label name="pointsLabel" text="Pontos: " style="color: #f9a875; font-size: 18px;" />
         </engine:VisualElement>
 
         <!-- Feedback -->

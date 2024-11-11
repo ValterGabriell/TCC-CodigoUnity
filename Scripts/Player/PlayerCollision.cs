@@ -10,14 +10,7 @@ public class PlayerCollision : MonoBehaviour
         {
             Debug.Log("Jogador entrou na area de colisao");
             canInteract = true;
-        }
-
-        if (collision.collider.CompareTag("Finish"))
-        {
-            Debug.Log("Jogador entrou na area de finalizar");
-            gameManager.isLevelCompleted = true;
-        }
-    }
+        }    }
 
     private void OnCollisionExit(Collision collision)
     {
@@ -25,12 +18,6 @@ public class PlayerCollision : MonoBehaviour
         {
             Debug.Log("Jogador saiu na area de colisao");
             canInteract = false;
-        }
-
-        if (collision.collider.CompareTag("Finish"))
-        {
-            Debug.Log("Jogador entrou na area de finalizar");
-            gameManager.isLevelCompleted = false;
         }
     }
 }

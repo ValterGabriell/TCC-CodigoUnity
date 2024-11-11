@@ -7,6 +7,7 @@ public class UITime : MonoBehaviour
     private Label timeLabel;
     private Label pointsLabel;
     public ModelTime _time;
+    public PointsModel _points;
 
 
     private void OnEnable()
@@ -19,5 +20,6 @@ public class UITime : MonoBehaviour
     private void FixedUpdate()
     {
         timeLabel.text = _time.timeElapsed;
+        pointsLabel.text = "Pontos: " +  _points.GetCurrentPoints().ToString();
     }
 }

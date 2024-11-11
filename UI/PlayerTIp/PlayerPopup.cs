@@ -40,7 +40,7 @@ public class PlayerPopup : MonoBehaviour
         else
         {
             tip.visible = false;
-            popupContainer.visible = true;
+            //popupContainer.visible = true;
         }
         if (player != null)
         {
@@ -58,7 +58,6 @@ public class PlayerPopup : MonoBehaviour
         Time.timeScale = 1;
         initialButton.text = "Fechar";
         popupContainer.visible = false;
-        tip.visible = true;
-        
+        tip.visible = true; 
     }
 }

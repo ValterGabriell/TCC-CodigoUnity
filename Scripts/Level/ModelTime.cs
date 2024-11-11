@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ModelTime : MonoBehaviour
 {
-    private float elapsedTime; // Variável para armazenar o tempo decorrido
+    private float elapsedTime; 
     public string timeElapsed = string.Empty;
 
 

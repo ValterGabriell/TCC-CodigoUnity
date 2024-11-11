@@ -14,6 +14,7 @@ public class Lvl03Control : MonoBehaviour
 
     private bool hasAllWhileBeenClosed = false;
     private bool whileHasActive = false;
+    private bool foundWhileAction = false;
 
     public PlayerCollision playerCollision;
     // Referência ao GameObject do jogador
@@ -75,6 +76,7 @@ public class Lvl03Control : MonoBehaviour
         }
         else if (action == "while")
         {
+            foundWhileAction = true;
             whileHasActive = true;
         }
         actionsList.Add(action);
@@ -97,13 +99,17 @@ public class Lvl03Control : MonoBehaviour
                 Debug.LogWarning("PRECISA FECHAR OS WHILE");
             }
         }
+        else if (!foundWhileAction)
+        {
+            Debug.LogWarning("PRECISA TER OS WHILE");
+        }
         else
         {
             gameManager.isWalking = true;
             // Iterar sobre as ações armazenadas e executar em sequência
             StartCoroutine(ExecuteActionsSequence());
         }
-        
+
 
     }
 
@@ -122,6 +128,7 @@ public class Lvl03Control : MonoBehaviour
             // Se encontramos um "if", verificamos a condição
             if (action == "while")
             {
+                foundWhileAction= true;
                 insideWhile = true;
                 currentWhileActions.Clear(); // Limpar ações do while
                 continue;  // Pula para a próxima iteração

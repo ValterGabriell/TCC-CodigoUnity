@@ -3,6 +3,7 @@ using UnityEngine;
 public class Level02 : MonoBehaviour
 {
     public GameManager gameManager;
+    public PointsModel pointsModel;
     public PlayerCollision playerCollision;
     public bool isOnPickableArea = false;
     public bool hasTheKey = false;
@@ -13,7 +14,12 @@ public class Level02 : MonoBehaviour
         {
             if (hasTheKey)
             {
-                gameManager.isLevelCompleted = true;           
+                pointsModel.increasePoint(50);
+                gameManager.isLevelCompleted = true;
+            }
+            else
+            {
+                pointsModel.decreasePoint(25);
             }
         }
     }

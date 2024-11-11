@@ -8,11 +8,13 @@ public class Lvl2Controle : MonoBehaviour
     private VisualElement root;
 
     public GameManager manager;
+    public PointsModel PointsModel;
     // Lista para armazenar as ações e condições
     private readonly List<string> actionsList = new List<string>();
     private readonly List<ConditionBlock> conditionBlocks = new List<ConditionBlock>();
 
     private bool hasAllIfBeenClosed = false;
+    private bool ifWasOpened = false;
 
     public PlayerCollision playerCollision; 
     // Referência ao GameObject do jogador
@@ -84,17 +86,20 @@ public class Lvl2Controle : MonoBehaviour
     private void ExecuteActions()
     {
 
-        if (hasAllIfBeenClosed)
+        if (hasAllIfBeenClosed && ifWasOpened)
         {
             manager.isWalking = true;
             // Iterar sobre as ações armazenadas e executar em sequência
             StartCoroutine(ExecuteActionsSequence());
         }
+        else if (!ifWasOpened)
+        {
+            StartCoroutine(ExecuteActionsSequence());
+        }
         else
         {
-            Debug.LogWarning("PRECISA FECHAR OS IF");
+            Debug.LogWarning("FECHA OS IF");
         }
-        
     }
 
     private IEnumerator ExecuteActionsSequence()
@@ -164,7 +169,7 @@ public class Lvl2Controle : MonoBehaviour
                 Debug.Log(action);
                 if (action == "pickKey")
                 {
-                    Debug.Log("COLETOU CHAVE");
+                    PointsModel.increasePoint(50);
                     level02.hasTheKey = true;
                     continue;
                 }
