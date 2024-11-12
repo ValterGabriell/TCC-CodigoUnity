@@ -59,10 +59,13 @@ public class GameManager : MonoBehaviour
     public Dictionary<MovementConditions, bool> whileCondition = new();
     public Dictionary<IFConditions, bool> ifCondition = new();
 
+
+    public Queue<string> movimentosUI = new();
+
+
+    
+
     // Funções para verificar condições
     public bool IsFreeWay() => whileCondition.ContainsKey(MovementConditions.FREE_WAY) && whileCondition[MovementConditions.FREE_WAY];
     public bool HasObstacle() => ifCondition.ContainsKey(IFConditions.OBSTACLE) && ifCondition[IFConditions.OBSTACLE];
-
-
-
 }

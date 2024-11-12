@@ -2,11 +2,13 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using System.Linq;
 
 public class ControleJogo : MonoBehaviour
 {
 
-    public GameManager Manager;
+    public GameManager gameManager;
     private VisualElement root;
 
     //define o level
@@ -34,7 +36,7 @@ public class ControleJogo : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Manager.isLevelCompleted)
+        if (gameManager.isLevelCompleted)
         {
             root.visible = false;
         }
@@ -79,7 +81,6 @@ public class ControleJogo : MonoBehaviour
 
         // Controle de Estruturas de Controle
         btnIf.clicked += () => RecordAction("if");
-        btnElse.clicked += () => RecordCondition("else");
         btnEndIf.clicked += () => RecordAction("end_if");
         btnEndWhile.clicked += () => RecordAction("end_while");
         btnWhile.clicked += () => RecordAction("while");
@@ -126,7 +127,8 @@ public class ControleJogo : MonoBehaviour
     // Função para armazenar ações de movimento
     private void RecordAction(string action)
     {
-      
+        gameManager.movimentosUI.Enqueue(action);
+        //Manager.movimentosUI.Add(";");
         actionsList.Add(action);
     }
 
@@ -147,9 +149,7 @@ public class ControleJogo : MonoBehaviour
     // Função para executar as ações armazenadas
     private void ExecuteActions()
     {
-        Manager.isWalking = true;
-       
-
+        gameManager.isWalking = true;
         // Iterar sobre as ações armazenadas e executar em sequência
         StartCoroutine(ExecuteActionsSequence());
     }
@@ -216,7 +216,8 @@ public class ControleJogo : MonoBehaviour
                 currentIfActions.Add(action);
                 continue;  // Pula para a próxima iteração
             }
-
+            //remove o item da pilha
+            gameManager.movimentosUI.Dequeue();
             // Se chegamos aqui, não estamos em um bloco if ou while, então executamos a ação normalmente
             yield return StartCoroutine(ExecuteMovementSmooth(action));
         }
@@ -227,7 +228,8 @@ public class ControleJogo : MonoBehaviour
             yield return StartCoroutine(ExecuteWhileActions(currentWhileActions, currentConditionBlock));
         }
         actionsList.Clear();
-        Manager.isWalking = false;
+        gameManager.isWalking = false;
+        gameManager.movimentosUI.Clear();
     }
     private ConditionBlock GetConditionForWhile()
     {
@@ -301,11 +303,6 @@ public class ControleJogo : MonoBehaviour
                 }
             }
 
-            // Executa as ações dentro do bloco while
-            foreach (var action in actions)
-            {
-               
-            }
             // Aguarda o próximo quadro para evitar que o loop bloqueie o jogo
             yield return null; // Aguarda o próximo frame
         }
@@ -357,7 +354,7 @@ public class ControleJogo : MonoBehaviour
                 break;
         }
 
-       
+
 
         float timeToMove = 1f / moveSpeed;
         float elapsedTime = 0f;

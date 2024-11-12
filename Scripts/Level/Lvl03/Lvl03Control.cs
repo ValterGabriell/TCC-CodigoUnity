@@ -69,6 +69,8 @@ public class Lvl03Control : MonoBehaviour
     // Função para armazenar ações de movimento
     private void RecordAction(string action)
     {
+        gameManager.movimentosUI.Enqueue(action);
+        // gameManager.movimentosUI.Add(";");
         if (action == "end_while")
         {
             hasAllWhileBeenClosed = true;
@@ -156,7 +158,9 @@ public class Lvl03Control : MonoBehaviour
                 // Se chegamos aqui, não estamos em um bloco if ou while, então executamos a ação normalmente
                 yield return StartCoroutine(ExecuteMovementSmooth(action));
             }
+            gameManager.movimentosUI.Dequeue();
         }
+        gameManager.movimentosUI.Clear();
         currentWhileActions.Clear(); // Limpar ações após execução
         actionsList.Clear(); // Limpar a lista original
         gameManager.isWalking = false;
@@ -202,6 +206,10 @@ public class Lvl03Control : MonoBehaviour
                 targetPosition += Vector3.back;
                 break;
         }
+
+
+
+        
         float timeToMove = 1f / moveSpeed;
         float elapsedTime = 0f;
 

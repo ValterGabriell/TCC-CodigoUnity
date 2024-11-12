@@ -7,7 +7,7 @@ public class Lvl2Controle : MonoBehaviour
 {
     private VisualElement root;
 
-    public GameManager manager;
+    public GameManager gameManager;
     public PointsModel PointsModel;
     // Lista para armazenar as ações e condições
     private readonly List<string> actionsList = new List<string>();
@@ -71,6 +71,8 @@ public class Lvl2Controle : MonoBehaviour
     // Função para armazenar ações de movimento
     private void RecordAction(string action)
     {
+        gameManager.movimentosUI.Enqueue(action);
+        //manager.movimentosUI.Add(";");
         if (action == "end_if")
         {
             hasAllIfBeenClosed = true;
@@ -88,7 +90,7 @@ public class Lvl2Controle : MonoBehaviour
 
         if (hasAllIfBeenClosed && ifWasOpened)
         {
-            manager.isWalking = true;
+            gameManager.isWalking = true;
             // Iterar sobre as ações armazenadas e executar em sequência
             StartCoroutine(ExecuteActionsSequence());
         }
@@ -148,10 +150,16 @@ public class Lvl2Controle : MonoBehaviour
                 // Se chegamos aqui, não estamos em um bloco if ou while, então executamos a ação normalmente
                 yield return StartCoroutine(ExecuteMovementSmooth(action));
             }
+
+            //remove o item da pilha
+            gameManager.movimentosUI.Dequeue();
+
+
         }
+        gameManager.movimentosUI.Clear();
         currentIfActions.Clear(); // Limpar ações após execução
         actionsList.Clear(); // Limpar a lista original
-        manager.isWalking = false;
+        gameManager.isWalking = false;
     }
 
 
@@ -166,9 +174,13 @@ public class Lvl2Controle : MonoBehaviour
             // Iterar sobre a cópia da lista para evitar o erro de modificação durante a iteração
             foreach (var action in actionsCopy)
             {
-                Debug.Log(action);
                 if (action == "pickKey")
                 {
+                    var obj = GameObject.Find("rust_key");
+                    if (obj != null)
+                    {
+                        Destroy(obj);
+                    }
                     PointsModel.increasePoint(50);
                     level02.hasTheKey = true;
                     continue;
@@ -200,6 +212,14 @@ public class Lvl2Controle : MonoBehaviour
                 targetPosition += Vector3.back;
                 break;
         }
+
+
+
+
+        
+
+
+
         float timeToMove = 1f / moveSpeed;
         float elapsedTime = 0f;
 
@@ -209,6 +229,8 @@ public class Lvl2Controle : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
+
 
         playerTransform.position = targetPosition;
     }
