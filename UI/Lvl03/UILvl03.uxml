@@ -2,27 +2,27 @@
     <Style src="project://database/Assets/UI/StylesVisual.uss?fileID=7433441132597879392&amp;guid=2b5c7f16313adca4c9a0b99a16fec8af&amp;type=3#StylesVisual" />
     <ui:VisualElement class="root" style="width: 100%; justify-content: space-between; align-items: flex-start; flex-direction: row;">
         <ui:VisualElement class="two-columns" style="width: 260px;">
-            <ui:VisualElement class="direction-group group" style="background-color: rgba(96, 149, 67, 0.3); width: 259px;">
-                <ui:Button text="Frente" name="forward" class="direction-button" />
-                <ui:Button text="Esquerda" name="left" class="direction-button" />
-                <ui:Button text="Trás" name="backward" class="direction-button" />
-                <ui:Button text="Direita" name="right" class="direction-button" />
+            <ui:VisualElement class="direction-group group" style="background-color: rgba(155, 93, 229, 0.1); border-radius: 10px; padding: 10px;">
+                <ui:Button text="Frente" name="forward" class="direction-button" style="background-color: #B9E1DC; color: #3E3E3E; border-radius: 5px; margin: 5px;" />
+                <ui:Button text="Esquerda" name="left" class="direction-button" style="background-color: #F5A3C7; color: #3E3E3E; border-radius: 5px; margin: 5px;" />
+                <ui:Button text="Trás" name="backward" class="direction-button" style="background-color: #FFD166; color: #3E3E3E; border-radius: 5px; margin: 5px;" />
+                <ui:Button text="Direita" name="right" class="direction-button" style="background-color: #A2D2FF; color: #3E3E3E; border-radius: 5px; margin: 5px;" />
             </ui:VisualElement>
-            <ui:VisualElement class="condition-group group" style="background-color: rgba(91, 128, 180, 0.3); width: 259px;">
-                <ui:Button text="Enquanto" name="while" class="condition-button" />
-                <ui:Button text="Fim Bloco Enquanto" name="end_while" class="condition-button" />
+            <ui:VisualElement class="condition-group group" style="background-color: rgba(0, 187, 249, 0.1); border-radius: 10px; padding: 10px; margin-top: 10px;">
+                <ui:Button text="Enquanto" name="while" class="condition-button" style="background-color: #F67280; color: white; border-radius: 5px; margin: 5px;" />
+                <ui:Button text="Fim Bloco Enquanto" name="end_while" class="condition-button" style="background-color: #6C5B7B; color: white; border-radius: 5px; margin: 5px;" />
             </ui:VisualElement>
-            <ui:VisualElement class="path-condition-group group" style="background-color: rgba(178, 145, 95, 0.3); width: 258px;">
-                <ui:Button text="Caminho Livre" name="freeWay" class="path-button" />
+            <ui:VisualElement class="path-condition-group group" style="background-color: rgba(255, 71, 126, 0.1); border-radius: 10px; padding: 10px; margin-top: 10px;">
+                <ui:Button text="Caminho Livre" name="freeWay" class="path-button" style="background-color: #FFB7B2; color: #3E3E3E; border-radius: 5px; margin: 5px;" />
             </ui:VisualElement>
-            <ui:Button text="START" name="start" class="start-button" />
+            <ui:Button text="START" name="start" class="start-button" style="background-color: #355C7D; color: white; border-radius: 5px; margin-top: 15px; padding: 10px;" />
         </ui:VisualElement>
         <ui:VisualElement style="width: 300px; margin-right: 20px; align-self: flex-start; height: 500px;">
-            <ui:Label name="stepsLabel" text="Passos Selecionados:" style="font-size: 16px; color: black; margin-bottom: 10px;" />
-            <ui:ScrollView name="stepsScrollView" style="height: 1280px; background-color: rgba(220, 220, 220, 0.3); padding: 5px;">
-                <ui:Label name="stepsContent" text="Nenhum passo selecionado ainda." style="font-size: 24px; color: rgb(80, 0, 255); white-space: normal; word-wrap: break-word;" />
+            <ui:Label name="stepsLabel" text="Passos Selecionados:" style="font-size: 16px; color: #355C7D; margin-bottom: 10px;" />
+            <ui:ScrollView name="stepsScrollView" style="height: 1280px; background-color: rgba(245, 245, 245, 0.5); padding: 10px; border-radius: 10px;">
+                <ui:Label name="stepsContent" text="Nenhum passo selecionado ainda." style="font-size: 18px; color: #6C5B7B; white-space: normal; word-wrap: break-word; margin: 5px;" />
             </ui:ScrollView>
-            <ui:Button text="AVANCAR" name="avance" class="path-button" />
+            <ui:Button text="AVANCAR" name="avance" class="path-button" style="background-color: #F8B195; color: white; border-radius: 5px; padding: 10px; margin-top: 10px;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

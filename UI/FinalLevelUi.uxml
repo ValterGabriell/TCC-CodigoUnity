@@ -5,24 +5,51 @@
     xmlns:editor="UnityEditor.UIElements"
     xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
 >
-    <engine:VisualElement style="width: 100%; height: 100%; padding: 20px; background-color: #7c3f58; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-        <!-- Title -->
-        <engine:Label text="Fim de Fase" style="color: #fff6d3; font-size: 24px; font-weight: bold; text-align: center; margin-bottom: 10px;" />
+    <!-- Container Principal para Fim de Fase -->
+    <engine:VisualElement 
+        style="width: 100%; height: 100%; padding: 20px; background-color: rgba(155, 93, 229, 0.9); /* Roxo Vibrante */
+        display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        
+        <!-- Título -->
+        <engine:Label 
+            text="Fim de Fase" 
+            style="color: #FEE440; font-size: 24px; font-weight: bold; text-align: center; margin-bottom: 10px;" /> <!-- Amarelo Solar -->
 
-        <!-- Phase Information -->
+        <!-- Informações sobre a Fase -->
         <engine:VisualElement style="margin-bottom: 15px;">
-            <engine:Label  name="faseAtual" text="Fase: [Nome da Fase]" style="color: #f9a875; font-size: 18px; margin-bottom: 5px;" />
-            <engine:Label name="modelTime" text="Tempo: [XX:XX]" style="color: #f9a875; font-size: 18px;" />
-            <engine:Label name="pointsLabel" text="Pontos: " style="color: #f9a875; font-size: 18px;" />
+            <engine:Label  
+                name="faseAtual" 
+                text="Fase: [Nome da Fase]" 
+                style="color: #00F5D4; font-size: 18px; margin-bottom: 5px;" /> <!-- Verde Menta -->
+            <engine:Label 
+                name="modelTime" 
+                text="Tempo: [XX:XX]" 
+                style="color: #00F5D4; font-size: 18px;" /> <!-- Verde Menta -->
+            <engine:Label 
+                name="pointsLabel" 
+                text="Pontos: " 
+                style="color: #00F5D4; font-size: 18px;" /> <!-- Verde Menta -->
         </engine:VisualElement>
 
         <!-- Feedback -->
-        <engine:Label text="Feedback: [Seu desempenho foi incrível!]" style="color: #eb6b6f; font-size: 16px; text-align: center;" />
+        <engine:Label 
+            text="Feedback: [Seu desempenho foi incrível!]" 
+            style="color: #FF477E; font-size: 16px; text-align: center;" /> <!-- Rosa Coral -->
 
-        <!-- Buttons for Next Actions -->
-        <engine:VisualElement style="flex-direction: row; justify-content: center; margin-top: 20px;">
-            <engine:Button text="Reiniciar Fase" style="background-color: #eb6b6f; color: #fff6d3; margin-right: 10px;" />
-            <engine:Button name="nextPhase" text="Próxima Fase" style="background-color: #f9a875; color: #7c3f58;" />
+        <!-- Botões para Próximas Ações -->
+        <engine:VisualElement 
+            style="flex-direction: row; justify-content: center; margin-top: 20px;">
+            
+            <!-- Botão para Reiniciar Fase -->
+            <engine:Button 
+                text="Reiniciar Fase" 
+                style="background-color: #FF477E; color: #fff6d3; margin-right: 10px; border-radius: 8px;" /> <!-- Rosa Coral -->
+            
+            <!-- Botão para Próxima Fase -->
+            <engine:Button 
+                name="nextPhase" 
+                text="Próxima Fase" 
+                style="background-color: #FEE440; color: #7c3f58; border-radius: 8px;" /> <!-- Amarelo Solar -->
         </engine:VisualElement>
     </engine:VisualElement>
 </engine:UXML>

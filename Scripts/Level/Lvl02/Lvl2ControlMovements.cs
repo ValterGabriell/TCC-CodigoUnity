@@ -9,9 +9,7 @@ public class Lvl2Controle : MonoBehaviour
 
     public GameManager gameManager;
     public PointsModel PointsModel;
-    // Lista para armazenar as ações e condições
-    private readonly List<string> actionsList = new List<string>();
-    private readonly List<ConditionBlock> conditionBlocks = new List<ConditionBlock>();
+
 
     private bool hasAllIfBeenClosed = false;
     private bool ifWasOpened = false;
@@ -80,7 +78,7 @@ public class Lvl2Controle : MonoBehaviour
         {
             hasAllIfBeenClosed = false;
         }
-        actionsList.Add(action);
+        gameManager.actionsList.Add(action);
     }
 
 
@@ -111,7 +109,7 @@ public class Lvl2Controle : MonoBehaviour
         bool wannExecSmthOnPickableArea = false;
         
 
-        List<string> actionsCopy = new List<string>(actionsList); // Copia a lista original
+        List<string> actionsCopy = new(gameManager.actionsList); // Copia a lista original
 
         // Itera sobre as ações para processar e armazenar as ações para o while
         foreach (var action in actionsCopy)
@@ -158,7 +156,7 @@ public class Lvl2Controle : MonoBehaviour
         }
         gameManager.movimentosUI.Clear();
         currentIfActions.Clear(); // Limpar ações após execução
-        actionsList.Clear(); // Limpar a lista original
+        gameManager.actionsList.Clear(); // Limpar a lista original
         gameManager.isWalking = false;
     }
 

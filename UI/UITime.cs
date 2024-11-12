@@ -4,11 +4,13 @@ using UnityEngine.UIElements;
 public class UITime : MonoBehaviour
 {
     private VisualElement root;
-    public GameManager manager;
+    public GameManager gameManager;
     private Label timeLabel;
     private Label pointsLabel;
+    private Button clearActions;
     public ModelTime _time;
     public PointsModel _points;
+    private bool clearList = false;
     ScrollView actionsList;
 
 
@@ -18,19 +20,30 @@ public class UITime : MonoBehaviour
         root = GetComponent<UIDocument>().rootVisualElement;
         timeLabel = root.Q<Label>("timeLabel");
         pointsLabel = root.Q<Label>("pointsLabel");
+        clearActions = root.Q<Button>("clearButton");
 
-
+        clearActions.clicked += () => 
+        {
+            gameManager.ClearActions();
+            clearList = true;
+        };
     }
-
 
 
     private void FixedUpdate()
     {
         timeLabel.text = _time.timeElapsed;
         pointsLabel.text = "Pontos: " + _points.GetCurrentPoints().ToString();
-        if (manager.movimentosUI.Count > 0)
+       
+        if (gameManager.movimentosUI.Count > 0)
         {
             PopulateInterface();
+        }
+
+        if (clearList)
+        {
+            actionsList.Clear();
+            clearList = false;
         }
     }
 
@@ -41,7 +54,7 @@ public class UITime : MonoBehaviour
 
         // Itera sobre a fila de ações
         int currentActionIndex = 0; // Indice para destacar a ação atual
-        foreach (string acao in manager.movimentosUI)
+        foreach (string acao in gameManager.movimentosUI)
         {
             // Cria um contêiner para cada ação
             var actionContainer = new VisualElement

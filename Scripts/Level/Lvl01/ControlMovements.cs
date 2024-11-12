@@ -23,7 +23,6 @@ public class ControleJogo : MonoBehaviour
     private Vector3 playerPosition = Vector3.zero;
 
     // Lista para armazenar as ações e condições
-    private List<string> actionsList = new List<string>();
     private List<ConditionBlock> conditionBlocks = new List<ConditionBlock>();
 
     
@@ -129,7 +128,7 @@ public class ControleJogo : MonoBehaviour
     {
         gameManager.movimentosUI.Enqueue(action);
         //Manager.movimentosUI.Add(";");
-        actionsList.Add(action);
+        gameManager.actionsList.Add(action);
     }
 
     // Função para armazenar condições (como 'if', 'while', 'freeWay', etc)
@@ -164,7 +163,7 @@ public class ControleJogo : MonoBehaviour
         bool foundEndWhile = false; // Flag para saber se encontramos "end_while"
 
         // Itera sobre as ações para processar e armazenar as ações para o while
-        foreach (var action in actionsList)
+        foreach (var action in gameManager.actionsList)
         {
             // Verifica se estamos em um bloco while
             if (action == "while")
@@ -227,7 +226,7 @@ public class ControleJogo : MonoBehaviour
             // Chama ExecuteWhileActions para executar o loop enquanto a condição for verdadeira
             yield return StartCoroutine(ExecuteWhileActions(currentWhileActions, currentConditionBlock));
         }
-        actionsList.Clear();
+        gameManager.actionsList.Clear();
         gameManager.isWalking = false;
         gameManager.movimentosUI.Clear();
     }
@@ -237,14 +236,14 @@ public class ControleJogo : MonoBehaviour
         // Aqui você pode verificar algo na lista de condições, ou outras variáveis.
 
         // Aqui eu faço uma verificação de exemplo, mas você pode personalizar isso
-        if (actionsList.Contains("freeWay"))
+        if (gameManager.actionsList.Contains("freeWay"))
         {
             isFreeway = true;
             return new ConditionBlock("while", isFreeway);  // Retorna a condição de freeWay
         }
 
         // Outra condição, dependendo de como você quiser definir as regras para o "while"
-        if (actionsList.Contains("hasKey"))
+        if (gameManager.actionsList.Contains("hasKey"))
         {
             hasKey = true; 
             return new ConditionBlock("while", hasKey);  // Retorna a condição de hasKey

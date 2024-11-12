@@ -6,12 +6,6 @@ using UnityEngine.UIElements;
 public class Lvl03Control : MonoBehaviour
 {
     private VisualElement root;
-
-
-    // Lista para armazenar as ações e condições
-    private readonly List<string> actionsList = new();
-    private readonly List<ConditionBlock> conditionBlocks = new();
-
     private bool hasAllWhileBeenClosed = false;
     private bool whileHasActive = false;
     private bool foundWhileAction = false;
@@ -81,7 +75,7 @@ public class Lvl03Control : MonoBehaviour
             foundWhileAction = true;
             whileHasActive = true;
         }
-        actionsList.Add(action);
+        gameManager.actionsList.Add(action);
     }
 
 
@@ -122,7 +116,7 @@ public class Lvl03Control : MonoBehaviour
         bool isFreeWay = false;
         
 
-        List<string> actionsCopy = new List<string>(actionsList); // Copia a lista original
+        List<string> actionsCopy = new List<string>(gameManager.actionsList); // Copia a lista original
 
         // Itera sobre as ações para processar e armazenar as ações para o while
         foreach (var action in actionsCopy)
@@ -162,7 +156,7 @@ public class Lvl03Control : MonoBehaviour
         }
         gameManager.movimentosUI.Clear();
         currentWhileActions.Clear(); // Limpar ações após execução
-        actionsList.Clear(); // Limpar a lista original
+        gameManager.actionsList.Clear(); // Limpar a lista original
         gameManager.isWalking = false;
     }
 

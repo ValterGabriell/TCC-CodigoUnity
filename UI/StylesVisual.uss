@@ -1,7 +1,7 @@
 /* Estilo da raiz com fundo transparente */
 .root {
     display: flex;
-    flex-direction: row\;
+    flex-direction: row;
     align-items: flex-start;
     padding: 0;
     margin: 0;
@@ -24,17 +24,17 @@
 .group-label {
     font-size: 16px; /* Aumentado para melhor legibilidade */
     font-weight: bold;
-    color: #333333;
+    color: #9B5DE5; /* Roxo Vibrante */
     margin: 0;
 }
 
 /* Botões de Direção */
 .direction-group {
-    background-color: rgba(225, 247, 213, 0.3); /* Verde claro semi-transparente */
+    background-color: rgba(0, 187, 249, 0.3); /* Azul Ciano semi-transparente */
 }
 .direction-button {
     font-size: 16px; /* Aumentado para melhor legibilidade */
-    color: #2d7a3b;
+    color: #00F5D4; /* Verde Menta */
     background-color: rgba(255, 255, 255, 0.6); /* Fundo branco semi-transparente */
     border: none;
     padding: 10px 20px; /* Aumentado para botões maiores */
@@ -46,11 +46,11 @@
 
 /* Botões de Condição */
 .condition-group {
-    background-color: rgba(211, 229, 255, 0.3); /* Azul claro semi-transparente */
+    background-color: rgba(254, 228, 64, 0.3); /* Amarelo Solar semi-transparente */
 }
 .condition-button {
     font-size: 16px; /* Aumentado para melhor legibilidade */
-    color: #1b4f91;
+    color: #FF8C42; /* Laranja Tangerina */
     background-color: rgba(255, 255, 255, 0.6); /* Fundo branco semi-transparente */
     border: none;
     padding: 10px 20px; /* Aumentado para botões maiores */
@@ -62,11 +62,11 @@
 
 /* Botões de Condição de Caminho */
 .path-condition-group {
-    background-color: rgba(255, 235, 204, 0.3); /* Amarelo claro semi-transparente */
+    background-color: rgba(255, 71, 126, 0.3); /* Rosa Coral semi-transparente */
 }
 .path-button {
     font-size: 16px; /* Aumentado para melhor legibilidade */
-    color: #b67a00;
+    color: #FF477E; /* Rosa Coral */
     background-color: rgba(255, 255, 255, 0.6); /* Fundo branco semi-transparente */
     border: none;
     padding: 10px 20px; /* Aumentado para botões maiores */
@@ -78,7 +78,7 @@
 
 .act-button {
     font-size: 24px; /* Aumentado para melhor legibilidade */
-    color: #000;
+    color: #9B5DE5; /* Roxo Vibrante */
     background-color: rgba(255, 255, 255, 0.6); /* Fundo branco semi-transparente */
     border: none;
     padding: 10px 20px; /* Aumentado para botões maiores */
@@ -91,7 +91,7 @@
 /* Botão de Start */
 .start-button {
     background-color: rgba(255, 204, 204, 0.3); /* Vermelho claro semi-transparente */
-    color: #b30000;
+    color: #FF477E; /* Rosa Coral */
     font-size: 18px; /* Aumentado para ser mais proeminente */
     font-weight: bold;
     padding: 12px 24px; /* Aumentado para botões maiores */

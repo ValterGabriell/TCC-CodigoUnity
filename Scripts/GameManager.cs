@@ -59,10 +59,15 @@ public class GameManager : MonoBehaviour
     public Dictionary<MovementConditions, bool> whileCondition = new();
     public Dictionary<IFConditions, bool> ifCondition = new();
 
+    public List<string> actionsList = new();
 
     public Queue<string> movimentosUI = new();
 
-
+    public void ClearActions()
+    {
+        movimentosUI.Clear();
+        actionsList.Clear();
+    }
     
 
     // Funções para verificar condições

@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c4f7e96d289e1478bd51df0d5fa0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Manager: {fileID: 859030730}
+  gameManager: {fileID: 859030730}
   currentLevel: 1
   playerTransform: {fileID: 1099548819}
   moveSpeed: 2
@@ -300,7 +300,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eef49dadc0de89439c711a395f71384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 859030730}
   _time: {fileID: 859030732}
+  _points: {fileID: 859030733}
 --- !u!1001 &172866944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1956,6 +1958,7 @@ MonoBehaviour:
   isWalking: 0
   isLevelCompleted: 0
   gameIsRunning: 0
+  actionsList: []
 --- !u!4 &859030731
 Transform:
   m_ObjectHideFlags: 0
@@ -2016,7 +2019,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2066896392038131574, guid: 45288819fde2143449a96207b14db0bb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.19
+      value: 18.52
       objectReference: {fileID: 0}
     - target: {fileID: 2066896392038131574, guid: 45288819fde2143449a96207b14db0bb, type: 3}
       propertyPath: m_LocalRotation.w

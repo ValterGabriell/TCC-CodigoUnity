@@ -1305,6 +1305,7 @@ MonoBehaviour:
   isWalking: 0
   isLevelCompleted: 0
   gameIsRunning: 0
+  actionsList: []
 --- !u!4 &859030731
 Transform:
   m_ObjectHideFlags: 0
@@ -1862,7 +1863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eef49dadc0de89439c711a395f71384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 859030730}
+  gameManager: {fileID: 859030730}
   _time: {fileID: 859030732}
   _points: {fileID: 859030733}
 --- !u!114 &1541742078
