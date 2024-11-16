@@ -14,7 +14,6 @@ public class PlayerPopup : MonoBehaviour
 
     private void OnEnable()
     {
-        Time.timeScale = 0;
         rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
         popupContainer = rootVisualElement.Q<VisualElement>("popupContainer");
         hintsContainer = rootVisualElement.Q<VisualElement>("hintsContainer");
@@ -55,7 +54,6 @@ public class PlayerPopup : MonoBehaviour
 
     private void OnInitialButtonClicked()
     {
-        Time.timeScale = 1;
         initialButton.text = "Fechar";
         popupContainer.visible = false;
         tip.visible = true; 

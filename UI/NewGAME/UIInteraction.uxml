@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+>
+    <!-- Container Principal com Fundo Transparente -->
+    <engine:VisualElement 
+        style="width: 100%; height: 100%; padding: 20px; background-color: rgba(0, 0, 0, 0); 
+        display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        
+        <!-- Mensagem de Dica -->
+        <engine:Label 
+            name="dicaIteracao" 
+            text="Dica: [Exemplo de Dica sobre a Fase]" 
+            style="color: #00F5D4; font-size: 20px; font-weight: bold; text-align: center;" /> <!-- Verde Menta -->
+
+    </engine:VisualElement>
+</engine:UXML>

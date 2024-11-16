@@ -10,6 +10,11 @@ public class GameManager : MonoBehaviour
     public bool isWalking = false;
     public bool isLevelCompleted = false;
 
+    private void Start()
+    {
+        Time.timeScale = 1.0f;
+    }
+
     // Gerenciamento de cenas (níveis)
     public void CompleteLevel(VisualElement root)
     {
