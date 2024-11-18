@@ -3,9 +3,7 @@ using UnityEngine;
 
 interface IInteractable
 {
-    public void Interact();
-    public void EnableOutline();
-    public void DisableOutline();
+    public void Interact(GameObject gameObject);
     public string TextInteraction(string text);
 }
 
@@ -31,10 +29,10 @@ public class FPInteract : MonoBehaviour
         var isColliding = Physics.Raycast(r, out RaycastHit hitInfo, interactRange);
         if (isColliding)
         {
-            Debug.Log($"Hit: {hitInfo.collider.gameObject.name} at {hitInfo.point}");
             if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactable))
             {
-                interactable.Interact();
+                Debug.Log($"Interactable: {interactable}");
+                interactable.Interact(hitInfo.collider.gameObject);
             }
         } 
     }

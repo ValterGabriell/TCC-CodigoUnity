@@ -15,7 +15,7 @@ public class Level02 : MonoBehaviour
             if (hasTheKey)
             {
                 pointsModel.increasePoint(50);
-                gameManager.isLevelCompleted = true;
+              //  gameManager.isLevelCompleted = true;
             }
             else
             {

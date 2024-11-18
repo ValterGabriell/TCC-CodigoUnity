@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
 
     public bool isWalking = false;
-    public bool isLevelCompleted = false;
+    public GenericLevel currentLevel;
 
     private void Start()
     {
@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public void CompleteLevel(VisualElement root)
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        isLevelCompleted = false;
+        currentLevel.isLevelCompleted = true;
         root.visible = false;
     }
 

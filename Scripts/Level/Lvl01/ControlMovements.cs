@@ -33,13 +33,6 @@ public class ControleJogo : MonoBehaviour
     // Velocidade do movimento suave
     public float moveSpeed = 2f;
 
-    private void FixedUpdate()
-    {
-        if (gameManager.isLevelCompleted)
-        {
-            root.visible = false;
-        }
-    }
 
     private void OnEnable()
     {

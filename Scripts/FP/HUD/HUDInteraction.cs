@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -25,6 +26,8 @@ public class HUDInteraction : MonoBehaviour
         root.visible = true;
         interactionText.text = text;
     }
+
+  
 
     public void DisableInteractionText()
     {

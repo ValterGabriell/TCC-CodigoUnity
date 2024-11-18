@@ -23,7 +23,7 @@ public class GenerateRandom : MonoBehaviour, IInteractable
         outline.enabled = true;
     }
 
-    public void Interact()
+    public void Interact(GameObject gameObject)
     {
         Debug.Log("Numero aleatorio: " + Random.RandomRange(1,100));
     }

@@ -9,7 +9,7 @@ public class Lvl03 : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             PointsModel.increasePoint(100);
-            gameManager.isLevelCompleted = true;
+          // gameManager.isLevelCompleted = true;
         }
     }
 }

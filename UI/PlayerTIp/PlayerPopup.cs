@@ -31,16 +31,16 @@ public class PlayerPopup : MonoBehaviour
 
     private void Update()
     {
-        if (gameManager.isLevelCompleted)
-        {
-            tip.visible = false;
-            popupContainer.visible = false;
-        }
-        else
-        {
-            tip.visible = false;
-            //popupContainer.visible = true;
-        }
+        //if (gameManager.isLevelCompleted)
+        //{
+        //    tip.visible = false;
+        //    popupContainer.visible = false;
+        //}
+        //else
+        //{
+        //    tip.visible = false;
+        //    //popupContainer.visible = true;
+        //}
         if (player != null)
         {
             // Converte a posição do player do mundo para a posição da tela

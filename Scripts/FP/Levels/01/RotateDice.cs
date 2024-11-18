@@ -3,64 +3,80 @@ using UnityEngine;
 
 public class RotateDice : MonoBehaviour, IInteractable
 {
-    Outline outline;
-    public bool isEnabled;
+
     public bool isRotating;
+    public LevelManager01 levelManager;
 
-    private int currentFace = 1;
-    public void DisableOutline()
+    public void Interact(GameObject gameObject)
     {
-        isEnabled = false;
-        outline.enabled = false;
-    }
-
-    public void EnableOutline()
-    {
-        isEnabled = true;
-        outline.enabled = true;
-    }
-
-    public void Interact()
-    {
-
+        HUDInteraction.instance.DisableInteractionText();
         if (isRotating)
         {
             return;
         }
 
-        currentFace++;
-        if (currentFace > 6)
-        {
-            currentFace = 1;
-        }
+        IncrementFaceByDice(gameObject);
 
+    }
+
+    public string TextInteraction(string text)
+    {
+        return text;
+    }
+
+    public void IncrementFaceByDice(GameObject gameObject)
+    {
+        switch (gameObject.name)
+        {
+            case "DICE_BLUE_01":
+                levelManager.IncrementDiceBlueOneFace();
+                RotateDiceByFace(levelManager.ReturnDiceBlueOneFace());
+                break;
+
+            case "DICE_BLUE_02":
+                levelManager.IncrementDiceBlueTwoFace();
+                RotateDiceByFace(levelManager.ReturnDiceBlueTwoFace());
+                break;
+
+            case "DICE_RED_01":
+                levelManager.IncrementDiceRedOneFace();
+                RotateDiceByFace(levelManager.ReturnDiceRedOneFace());
+                break;
+
+            case "DICE_RED_02":
+                levelManager.IncrementDiceRedTwoFace();
+                RotateDiceByFace(levelManager.ReturnDiceRedTwoFace());
+                break;
+        }
+    }
+
+    public void RotateDiceByFace(int currentFace)
+    {
+        Debug.Log("CurrentDiceFace: " + currentFace);
         Vector3 rotation = Vector3.zero;
         switch (currentFace)
         {
             case 1:
-                rotation = new Vector3(0, 0, 0); // Face 1
+                rotation = new Vector3(270, 0, 0); // Face 1
                 break;
             case 2:
-                rotation = new Vector3(90, 0, 0); // Face 2
+                rotation = new Vector3(360, 0, 0); // Face 2
                 break;
             case 3:
-                rotation = new Vector3(180, 0, 0); // Face 3
+                rotation = new Vector3(360, 0, 270); // Face 3
                 break;
             case 4:
-                rotation = new Vector3(270, 0, 0); // Face 4
+                rotation = new Vector3(180, 0, 270); // Face 4
                 break;
             case 5:
-                rotation = new Vector3(0, 90, 0); // Face 5
+                rotation = new Vector3(180, 0, 0); // Face 5
                 break;
             case 6:
-                rotation = new Vector3(0, 270, 0); // Face 6
+                rotation = new Vector3(90, 0, 0); // Face 6
                 break;
         }
-
         StartCoroutine(RotateToTarget(Quaternion.Euler(rotation)));
-
     }
-
 
     private IEnumerator RotateToTarget(Quaternion targetRotation)
     {
@@ -81,16 +97,4 @@ public class RotateDice : MonoBehaviour, IInteractable
         transform.localRotation = targetRotation;
         isRotating = false;
     }
-
-    public string TextInteraction(string text)
-    {
-        return text;
-    }
-    private void Start()
-    {
-        outline = GetComponent<Outline>();
-        DisableOutline();
-    }
-
-
 }

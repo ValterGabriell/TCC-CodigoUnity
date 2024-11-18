@@ -5,7 +5,7 @@ public class UIFinalLevel : MonoBehaviour
 {
  
     private VisualElement root;
-    public GameManager manager;
+    public GameManager gameManager;
     public ModelTime _time;
     public PointsModel _points;
     Label pointsLabel;
@@ -31,13 +31,13 @@ public class UIFinalLevel : MonoBehaviour
        
 
         avancar.clicked += () => {
-            manager.CompleteLevel(root);
+            gameManager.CompleteLevel(root);
         };
     }
 
     private void FixedUpdate()
     {
-        if (manager.isLevelCompleted)
+        if (gameManager.currentLevel.isLevelCompleted)
         {
             root.visible = true;
             Time.timeScale = 0;
