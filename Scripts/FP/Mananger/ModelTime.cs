@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class ModelTime : MonoBehaviour
 {
-    public float elapsedTime = 5f; 
-    private string timeElapsed = string.Empty;
+    private float elapsedTime = 100f;
+    public string timeElapsed = string.Empty;
     public GameManager gameManager;
+    public bool hasTimeEnded = false;
+
     private void FixedUpdate()
     {
         if (!gameManager.currentLevel.isLevelCompleted)
@@ -15,6 +17,7 @@ public class ModelTime : MonoBehaviour
             {
                 gameManager.currentLevel.isLevelCompleted = true;
                 gameManager.currentLevel.hasSuccess = false;
+                hasTimeEnded = true;
             }
             else
             {

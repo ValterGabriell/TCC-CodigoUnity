@@ -6,19 +6,17 @@ public class LevelManager01 : GenericLevel
     private int currentDiceBlueTwoFace = 1;
     private int currentDiceRedOneFace = 1;
     private int currentDiceRedTwoFace = 1;
-    private bool canOpenDoor = false;
+    public bool canNormalizePlataforms = false;
 
-    public GameObject door;
-    public GameManager gameManager;
+   
+   
 
     private void FixedUpdate()
     {
-        if (canOpenDoor)
+        if (canNormalizePlataforms)
         {
-           // this.LEVEL_STATUS = ENUM_LEVEL_STATUS.SUCCESS;
             this.isLevelCompleted = true;
             this.hasSuccess = true;
-            Destroy(door);
         }
     }
 
@@ -34,7 +32,7 @@ public class LevelManager01 : GenericLevel
                 //se os valroes de azul 2 for diferente dos vermelhos
                 if (currentDiceBlueTwoFace != currentDiceRedTwoFace && currentDiceBlueTwoFace != currentDiceRedOneFace)
                 {
-                    canOpenDoor = true;
+                    canNormalizePlataforms = true;
                 }
                 else
                 {

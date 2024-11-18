@@ -11,7 +11,7 @@ public class UITime : MonoBehaviour
     public ModelTime _time;
     public PointsModel _points;
     private bool clearList = false;
-    ScrollView actionsList;
+   
 
 
 
@@ -32,25 +32,17 @@ public class UITime : MonoBehaviour
 
     private void FixedUpdate()
     {
-        timeLabel.text = _time.timeElapsed;
+        timeLabel.text = _time.timeElapsed.ToString();
         pointsLabel.text = "Pontos: " + _points.GetCurrentPoints().ToString();
-       
+
         if (gameManager.movimentosUI.Count > 0)
         {
             PopulateInterface();
-        }
-
-        if (clearList)
-        {
-            actionsList.Clear();
-            clearList = false;
         }
     }
 
     private void PopulateInterface()
     {
-        actionsList = root.Q<ScrollView>("actionsList");
-        actionsList.Clear();
 
         // Itera sobre a fila de ações
         int currentActionIndex = 0; // Indice para destacar a ação atual
@@ -96,8 +88,6 @@ public class UITime : MonoBehaviour
 
             actionContainer.Add(actionLabel); // Adiciona o texto da ação ao contêiner
 
-            // Adiciona o contêiner completo (com ou sem o ícone de destaque) à lista
-            actionsList.Add(actionContainer);
 
             // Atualiza o índice para a próxima ação
             currentActionIndex++;

@@ -10,7 +10,8 @@ public class PlayerCollision : MonoBehaviour
         {
             Debug.Log("Jogador entrou na area de colisao");
             canInteract = true;
-        }    }
+        }
+    }
 
     private void OnCollisionExit(Collision collision)
     {

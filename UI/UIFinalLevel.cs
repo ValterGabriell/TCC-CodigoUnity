@@ -6,7 +6,7 @@ public class UIFinalLevel : MonoBehaviour
  
     private VisualElement root;
     public GameManager gameManager;
-    public ModelTime _time;
+    public ModelTime modelTime;
     public PointsModel _points;
     Label pointsLabel;
 
@@ -37,11 +37,14 @@ public class UIFinalLevel : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (gameManager.currentLevel.isLevelCompleted)
+        if (gameManager.currentLevel.isLevelCompleted && gameManager.currentLevel.hasPassedThrougTheFinalArea
+            ||
+            gameManager.currentLevel.isLevelCompleted && modelTime.hasTimeEnded
+            )
         {
             root.visible = true;
             Time.timeScale = 0;
-            time.text = "Tempo: " + _time.timeElapsed;
+            time.text = "Tempo: " + modelTime.timeElapsed;
             pointsLabel.text = "Pontos: " + _points.GetCurrentPoints();
         }
     }
