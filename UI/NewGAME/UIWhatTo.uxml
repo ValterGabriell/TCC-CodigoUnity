@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+>
+    <!-- Container Principal com Fundo Transparente -->
+    <engine:VisualElement 
+        style="width: 100%; height: 100%; padding: 20px; background-color: rgba(255, 255, 255, 0.8); 
+        display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+        
+        <!-- Objetivo da Fase -->
+        <engine:Label 
+            name="objetivoFase" 
+            text="Objetivo: Complete o circuito para ativar o gerador."
+            style="color: #333333; font-size: 18px; font-weight: bold; text-align: center; margin-bottom: 10px;" /> <!-- Cor neutra escura -->
+
+        <!-- Problema -->
+        <engine:Label 
+            name="problemaFase" 
+            text="Problema: Enquanto o circuito estiver incompleto, o gerador não funcionará." 
+            style="color: #555555; font-size: 16px; text-align: center; margin-bottom: 15px;" /> <!-- Cor neutra escura mais clara -->
+
+        <!-- Mensagem Educativa -->
+        <engine:Label 
+            name="mensagemEducativa" 
+            text="Mensagem Educativa: Os loops em programação, como 'while', são usados para repetir uma ação até que uma condição seja atendida. Em eletrônica, usamos loops para monitorar circuitos e dispositivos até que uma tarefa seja completada." 
+            style="color: #444444; font-size: 14px; text-align: center; max-width: 80%; line-height: 1.5;" /> <!-- Cor neutra e texto mais compacto -->
+
+    </engine:VisualElement>
+</engine:UXML>

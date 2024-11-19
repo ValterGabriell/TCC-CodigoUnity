@@ -7,9 +7,10 @@ public class LevelManager01 : GenericLevel
     private int currentDiceRedOneFace = 1;
     private int currentDiceRedTwoFace = 1;
     public bool canNormalizePlataforms = false;
+   
 
-   
-   
+
+
 
     private void FixedUpdate()
     {
@@ -36,17 +37,17 @@ public class LevelManager01 : GenericLevel
                 }
                 else
                 {
-                    HUDInteraction.instance.EnableInteractionText("OS VALORES DOS DADOS PRECISAM SER DIFERENTES");
+                    HUDInteraction.instance.EnableInteractionText("OS VALORES DOS DADOS PRECISAM SER DIFERENTES", "RELEIA AS INSTRUÇÕES SE NECESSÁRIO APERTANDO P");
                 }
             }
             else
             {
-                HUDInteraction.instance.EnableInteractionText("OS VALORES DOS DADOS PRECISAM SER DIFERENTES");
+                HUDInteraction.instance.EnableInteractionText("OS VALORES DOS DADOS PRECISAM SER DIFERENTES", "RELEIA AS INSTRUÇÕES SE NECESSÁRIO APERTANDO P");
             }
         }
         else
         {
-            HUDInteraction.instance.EnableInteractionText("O PESO NÃO ESTÁ IGUAL");
+            HUDInteraction.instance.EnableInteractionText("O PESO NÃO ESTÁ IGUAL", "RELEIA AS INSTRUÇÕES SE NECESSÁRIO APERTANDO P");
         }
     }
 

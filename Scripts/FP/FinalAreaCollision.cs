@@ -6,7 +6,6 @@ public class FinalAreaCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
         if (other.CompareTag("Player"))
         {
             gameManager.currentLevel.hasPassedThrougTheFinalArea = true;

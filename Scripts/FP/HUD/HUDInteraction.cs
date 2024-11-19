@@ -7,6 +7,7 @@ public class HUDInteraction : MonoBehaviour
     public static HUDInteraction instance;
     private VisualElement root;
     private Label interactionText;
+    private Label msg;
 
     private void Awake()
     {
@@ -17,14 +18,16 @@ public class HUDInteraction : MonoBehaviour
     {
         root = GetComponent<UIDocument>().rootVisualElement;
 
-        interactionText = root.Q<Label>("dicaIteracao");
+        interactionText = root.Q<Label>("mensagemPrincipal");
+        msg = root.Q<Label>("mensagemSecundaria");
         root.visible = false;
     }
 
-    public void EnableInteractionText(string text)
+    public void EnableInteractionText(string text,string _msg)
     {
         root.visible = true;
         interactionText.text = text;
+        msg.text = _msg;
     }
 
   

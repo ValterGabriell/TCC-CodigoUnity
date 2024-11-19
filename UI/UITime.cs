@@ -10,7 +10,7 @@ public class UITime : MonoBehaviour
     private Button clearActions;
     public ModelTime _time;
     public PointsModel _points;
-    private bool clearList = false;
+
    
 
 
@@ -25,7 +25,6 @@ public class UITime : MonoBehaviour
         clearActions.clicked += () => 
         {
             gameManager.ClearActions();
-            clearList = true;
         };
     }
 
