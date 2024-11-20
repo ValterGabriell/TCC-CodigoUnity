@@ -14,19 +14,20 @@
         <engine:Label 
             name="objetivoFase" 
             text="Objetivo: Complete o circuito para ativar o gerador."
-            style="color: #333333; font-size: 18px; font-weight: bold; text-align: center; margin-bottom: 10px;" /> <!-- Cor neutra escura -->
+            style="color: #333333; font-size: 28px; font-weight: bold; text-align: center; margin-bottom: 10px;word-wrap: break-word; white-space: normal;" /> <!-- Cor neutra escura -->
 
         <!-- Problema -->
         <engine:Label 
             name="problemaFase" 
             text="Problema: Enquanto o circuito estiver incompleto, o gerador não funcionará." 
-            style="color: #555555; font-size: 16px; text-align: center; margin-bottom: 15px;" /> <!-- Cor neutra escura mais clara -->
+            style="color: #555555; font-size: 26px; text-align: center; margin-bottom: 15px;" /> <!-- Cor neutra escura mais clara -->
 
         <!-- Mensagem Educativa -->
-        <engine:Label 
-            name="mensagemEducativa" 
-            text="Mensagem Educativa: Os loops em programação, como 'while', são usados para repetir uma ação até que uma condição seja atendida. Em eletrônica, usamos loops para monitorar circuitos e dispositivos até que uma tarefa seja completada." 
-            style="color: #444444; font-size: 14px; text-align: center; max-width: 80%; line-height: 1.5;" /> <!-- Cor neutra e texto mais compacto -->
+       <engine:Label 
+    name="mensagemEducativa" 
+    text="Mensagem Educativa: Os loops em programação, como 'while', são usados para repetir uma ação até que uma condição seja atendida. Em eletrônica, usamos loops para monitorar circuitos e dispositivos até que uma tarefa seja completada." 
+    style="color: #444444; font-size: 24px; text-align: center; max-width: 80%; line-height: 1.5; word-wrap: break-word; white-space: normal;" /> <!-- Ajuste para quebra de linha -->
+
 
     </engine:VisualElement>
 </engine:UXML>

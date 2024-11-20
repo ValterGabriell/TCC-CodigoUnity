@@ -29,10 +29,10 @@ public class HUDInteractionToDo : MonoBehaviour
 
     public void EnableInteractionText()
     {
-        root.visible = true;
         goal.text = gameManager.currentLevel.Level_O1().MSG;
         problem.text = gameManager.currentLevel.Level_O1().EX;
         msg.text = gameManager.currentLevel.Level_O1().ED;
+        root.visible = true;
     }
 
   

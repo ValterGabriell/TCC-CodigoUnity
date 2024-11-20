@@ -12,16 +12,30 @@
         background-color: rgba(255, 246, 211, 0.7); padding: 5px; border-radius: 10px;">
         
         <!-- Item de Tempo -->
-        <engine:Label 
-            name="timeLabel" 
+         <engine:Label 
+            name="tempoLabel" 
             text="00:00" 
-            style="font-size: 24px; color: #7C3F58; margin-right: 15px; font-weight: bold;" />
+            style="font-size: 24px; color: #EB6B6F; margin-right: 15px; font-weight: bold;" />
         
         <!-- Item de Pontos -->
         <engine:Label 
             name="pointsLabel" 
             text="Pontos Atual: 0" 
             style="font-size: 24px; color: #EB6B6F; margin-right: 15px; font-weight: bold;" />
+
+
         
     </engine:VisualElement>
+
+    <!-- Campo de instrução na esquerda -->
+    <engine:VisualElement 
+        style="position: absolute; top: 10px; left: 10px; 
+        background-color: rgba(0, 0, 0, 0.8); padding: 10px; border-radius: 10px; 
+        display: flex; align-items: center; justify-content: center;">
+        
+        <engine:Label 
+            text="Para ver o que fazer na fase, pressione I" 
+            style="font-size: 18px; color: #FFFFFF; font-weight: bold;" />
+    </engine:VisualElement>
+
 </engine:UXML>

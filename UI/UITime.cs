@@ -7,7 +7,6 @@ public class UITime : MonoBehaviour
     public GameManager gameManager;
     private Label timeLabel;
     private Label pointsLabel;
-    private Button clearActions;
     public ModelTime _time;
     public PointsModel _points;
 
@@ -18,14 +17,8 @@ public class UITime : MonoBehaviour
     private void OnEnable()
     {
         root = GetComponent<UIDocument>().rootVisualElement;
-        timeLabel = root.Q<Label>("timeLabel");
+        timeLabel = root.Q<Label>("tempoLabel");
         pointsLabel = root.Q<Label>("pointsLabel");
-        clearActions = root.Q<Button>("clearButton");
-
-        clearActions.clicked += () => 
-        {
-            gameManager.ClearActions();
-        };
     }
 
 
