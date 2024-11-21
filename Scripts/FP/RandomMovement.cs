@@ -8,7 +8,13 @@ public class RandomPlataformMovement : MonoBehaviour
 
     public float moveSpeed = 2f; 
     private Vector3 targetPosition;  
-    private float constZ; 
+    private float constZ;
+    public bool randomicMovement = true;
+
+    public Vector3 startNotRandom = Vector3.zero;
+    public Vector3 endNotRandom = Vector3.zero;
+    
+
 
     private Vector3 initialPosition;
 
@@ -16,26 +22,43 @@ public class RandomPlataformMovement : MonoBehaviour
     {
         constZ = transform.localPosition.z;
         initialPosition = transform.localPosition;
-        SetRandomTargetPosition();
+        if (randomicMovement)
+        {
+            SetRandomTargetPosition();
+        }
     }
     void Update()
     {
-        if (levelManager.canNormalizePlataforms)
+        if (randomicMovement)
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, initialPosition, moveSpeed * Time.deltaTime);
-            if (Vector3.Distance(transform.localPosition, initialPosition) < 0.1f)
+            if (levelManager.canNormalizePlataforms)
             {
-                SetInitialPosition();
+                transform.localPosition = Vector3.Lerp(transform.localPosition, initialPosition, moveSpeed * Time.deltaTime);
+                if (Vector3.Distance(transform.localPosition, initialPosition) < 0.1f)
+                {
+                    SetInitialPosition();
+                }
+            }
+            else
+            {
+                transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, moveSpeed * Time.deltaTime);
+
+                if (Vector3.Distance(transform.localPosition, targetPosition) < 0.1f)
+                {
+                    SetRandomTargetPosition();
+                }
             }
         }
         else
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, moveSpeed * Time.deltaTime);
-
-            if (Vector3.Distance(transform.localPosition, targetPosition) < 0.1f)
+            if (Vector3.Distance(transform.localPosition, endNotRandom) < 0.1f)
             {
-                SetRandomTargetPosition();
+                targetPosition = startNotRandom;
+            }else if (Vector3.Distance(transform.localPosition, startNotRandom) < 0.1f)
+            {
+                targetPosition = endNotRandom;
             }
+            transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, moveSpeed * Time.deltaTime);
         }
     }
 
