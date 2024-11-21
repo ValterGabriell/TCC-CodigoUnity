@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+    public int currentLevel = 0;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
@@ -14,7 +15,7 @@ public class PlayerControl : MonoBehaviour
             else
             {
                 Time.timeScale = 0f;
-                HUDInteractionToDo.instance.EnableInteractionText();
+                HUDInteractionToDo.instance.EnableInteractionText(currentLevel);
             }
         }
     }

@@ -23,20 +23,18 @@ public class ItemFalling : MonoBehaviour
             }
             else
             {
-                while (timeElapsed < timeToFall)
-                {
-                    timeElapsed += Time.deltaTime * 0.1f;
-                    Debug.Log(timeElapsed);
-                }
-                FallDown();
+                //while (timeElapsed < timeToFall)
+                //{
+                //    timeElapsed += Time.deltaTime * 0.1f;
+                //    Debug.Log(timeElapsed);
+                //}
+                //FallDown();
             }
         }
     }
 
     private void FallDown()
     {
-        rb.useGravity = true;
-        rb.freezeRotation = false;
-        rb.mass = 0.1f;
+        Destroy(gameObject);
     }
 }

@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
         root.visible = false;
     }
 
+
+
     // Enum para os tipos de movimento
     public enum MovementType
     {

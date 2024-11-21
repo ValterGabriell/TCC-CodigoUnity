@@ -27,11 +27,21 @@ public class HUDInteractionToDo : MonoBehaviour
         root.visible = false;
     }
 
-    public void EnableInteractionText()
+    public void EnableInteractionText(int currentLevel)
     {
-        goal.text = gameManager.currentLevel.Level_O1().MSG;
-        problem.text = gameManager.currentLevel.Level_O1().EX;
-        msg.text = gameManager.currentLevel.Level_O1().ED;
+        switch (currentLevel)
+        {
+            case 1:
+                goal.text = gameManager.currentLevel.Level_O1().MSG;
+                problem.text = gameManager.currentLevel.Level_O1().EX;
+                msg.text = gameManager.currentLevel.Level_O1().ED;
+                break;
+            case 2:
+                goal.text = gameManager.currentLevel.Level_O2().MSG;
+                problem.text = gameManager.currentLevel.Level_O2().EX;
+                msg.text = gameManager.currentLevel.Level_O2().ED;
+                break;
+        }
         root.visible = true;
     }
 

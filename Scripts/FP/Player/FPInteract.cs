@@ -31,7 +31,6 @@ public class FPInteract : MonoBehaviour
         {
             if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactable))
             {
-                Debug.Log($"Interactable: {interactable}");
                 interactable.Interact(hitInfo.collider.gameObject);
             }
         } 

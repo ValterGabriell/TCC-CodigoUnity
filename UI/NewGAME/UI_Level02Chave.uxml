@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
+>
+    <engine:VisualElement name="UIRoot" style="flex-grow: 1; position: absolute; width: 100%; height: 100%;">
+        <!-- Container das chaves e rótulo -->
+        <engine:VisualElement 
+            name="KeyContainer" 
+            style="position: absolute; top: 10px; right: 10px; flex-direction: column; align-items: flex-end; gap: 10px;">
+            <!-- Rótulo -->
+            <engine:Label 
+                text="Chaves" 
+                style="font-size: 36px; font-weight: bold; color: #FFFFFF; background-color: rgba(0, 0, 0, 0.5); padding: 5px; border-radius: 5px;" />
+            
+            <!-- Linha com as chaves -->
+            <engine:VisualElement 
+                name="KeyIcons" 
+                style="flex-direction: row; gap: 15px; align-items: center;">
+                <!-- Chave Azul -->
+                <engine:VisualElement 
+                    name="BlueKey" 
+                    style="width: 55px; height: 55px; background-color: #0000FF; border-radius: 50%; border: 2px solid #000000;" />
+                <!-- Chave Vermelha -->
+                <engine:VisualElement 
+                    name="RedKey" 
+                    style="width: 55px; height: 55px; background-color: #FF0000; border-radius: 50%; border: 2px solid #000000;" />
+                <!-- Chave Branca -->
+                <engine:VisualElement 
+                    name="WhiteKey" 
+                    style="width: 55px; height: 55px; background-color: #FFFFFF; border-radius: 50%; border: 2px solid #000000;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

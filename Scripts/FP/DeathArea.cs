@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class DeathArea : MonoBehaviour
 {
+    public LevelManager02 levelManager;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            other.gameObject.transform.localPosition = new Vector3(-2,2.4f,8f);
+            levelManager.RestartLevel();
         }
     }
 }
