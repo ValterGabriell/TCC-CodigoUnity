@@ -21,12 +21,20 @@ public class InstructionModel
 public class GenericLevel : MonoBehaviour
 {
     public bool isLevelCompleted = false;
-    public bool hasSuccess = false;
-    public bool hasPassedThrougTheFinalArea = false;
+    public bool hasEndedLevel = false;
 
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void EndLevel(bool success)
+    {
+        if (success)
+        {
+            isLevelCompleted = true;
+            hasEndedLevel = true;
+        }
     }
 
     public InstructionModel Level_O1()

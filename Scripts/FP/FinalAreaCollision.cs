@@ -8,16 +8,15 @@ public class FinalAreaCollision : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            gameManager.currentLevel.hasPassedThrougTheFinalArea = true;
+            gameManager.currentLevel.hasEndedLevel = true;
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.collider.tag);
         if (collision.collider.CompareTag("Player"))
         {
-            gameManager.currentLevel.hasPassedThrougTheFinalArea = true;
+            gameManager.currentLevel.hasEndedLevel = true;
         }
     }
 }

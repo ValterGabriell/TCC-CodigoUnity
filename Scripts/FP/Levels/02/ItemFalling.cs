@@ -5,7 +5,7 @@ public class ItemFalling : MonoBehaviour
     Rigidbody rb;
     public bool shouldFall = false;
     public float timeToFall = 25f;
-    private float timeElapsed = 0f;
+
 
     private void Start()
     {

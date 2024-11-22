@@ -2,15 +2,15 @@
 
 public class IteractableDoor : MonoBehaviour, IInteractable
 {
+    public GameManager gameManager;
     public LevelManager02 levelManager;
     public void Interact(GameObject gameObject)
     {
-        Debug.Log(gameObject.name);
         if (gameObject.name == "BLUE_DOOR")
         {
             if (levelManager.hasBlueKey)
             {
-                levelManager.RestartLevel();
+                gameManager.currentLevel.RestartLevel();
             }
         }
 
@@ -18,7 +18,7 @@ public class IteractableDoor : MonoBehaviour, IInteractable
         {
             if (levelManager.hasRedKey)
             {
-                levelManager.RestartLevel();
+                gameManager.currentLevel.RestartLevel();
             }
         }
 
@@ -26,7 +26,7 @@ public class IteractableDoor : MonoBehaviour, IInteractable
         {
             if (levelManager.hasWhiteKey)
             {
-                Debug.Log("OPEN WHITE DOOR");
+                gameManager.currentLevel.EndLevel(true);
             }
         }
     }

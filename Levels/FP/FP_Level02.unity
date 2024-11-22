@@ -1007,8 +1007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLevelCompleted: 0
-  hasSuccess: 0
-  hasPassedThrougTheFinalArea: 0
+  hasEndedLevel: 0
   hasRedKey: 1
   hasBlueKey: 1
   hasWhiteKey: 1
@@ -1917,6 +1916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26fd895f213b6ee4f840c7965a81f71f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialTimeInFloat: 50
   timeElapsed: 
   gameManager: {fileID: 859030730}
   hasTimeEnded: 0
@@ -3280,6 +3280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d59d3ec49df66249bf015ec39dca961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 859030730}
   levelManager: {fileID: 355202765}
 --- !u!64 &1402500869
 MeshCollider:
@@ -4015,6 +4016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d59d3ec49df66249bf015ec39dca961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 859030730}
   levelManager: {fileID: 355202765}
 --- !u!64 &1818966576
 MeshCollider:
@@ -4650,7 +4652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ab034029bd91f9409b77ae4bb94c692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldFall: 1
+  shouldFall: 0
   timeToFall: 25
 --- !u!54 &2070865573
 Rigidbody:
@@ -4935,6 +4937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d59d3ec49df66249bf015ec39dca961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 859030730}
   levelManager: {fileID: 355202765}
 --- !u!64 &2131652052
 MeshCollider:

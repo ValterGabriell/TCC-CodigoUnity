@@ -15,16 +15,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
-    // Gerenciamento de cenas (níveis)
-    public void CompleteLevel(VisualElement root)
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        currentLevel.isLevelCompleted = true;
-        root.visible = false;
-    }
-
-
-
     // Enum para os tipos de movimento
     public enum MovementType
     {

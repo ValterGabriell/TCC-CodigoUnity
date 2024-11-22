@@ -7,9 +7,13 @@ public class LevelManager01 : GenericLevel
     private int currentDiceRedOneFace = 1;
     private int currentDiceRedTwoFace = 1;
     public bool canNormalizePlataforms = false;
-   
 
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+
+    }
 
 
     private void FixedUpdate()
@@ -17,7 +21,6 @@ public class LevelManager01 : GenericLevel
         if (canNormalizePlataforms)
         {
             this.isLevelCompleted = true;
-            this.hasSuccess = true;
         }
     }
 

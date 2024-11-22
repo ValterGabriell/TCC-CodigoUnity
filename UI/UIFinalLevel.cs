@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class UIFinalLevel : MonoBehaviour
@@ -28,20 +29,21 @@ public class UIFinalLevel : MonoBehaviour
         Label fase = root.Q<Label>("faseAtual");
         pointsLabel = root.Q<Label>("pointsLabel");
         fase.text = "Fase: " + faseAtual.ToString();
-       
 
         avancar.clicked += () => {
-            gameManager.CompleteLevel(root);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         };
+      
     }
 
     private void FixedUpdate()
     {
-        if (gameManager.currentLevel.isLevelCompleted && gameManager.currentLevel.hasPassedThrougTheFinalArea
+        if (gameManager.currentLevel.isLevelCompleted && gameManager.currentLevel.hasEndedLevel
             ||
             gameManager.currentLevel.isLevelCompleted && modelTime.hasTimeEnded
             )
         {
+            UnityEngine.Cursor.visible = true;
             root.visible = true;
             Time.timeScale = 0;
             time.text = "Tempo: " + modelTime.timeElapsed;
